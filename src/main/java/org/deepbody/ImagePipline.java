@@ -48,7 +48,7 @@ public class ImagePipline {
         ImageRecordReader recordReader = new ImageRecordReader(height,width,channels,labelMaker);
         ImageTransform transform = new MultiImageTransform(randNumGen,new ShowImageTransform("Display - before "));
         recordReader.initialize(trainData,transform);
-        DataSetIterator dataIter = new RecordReaderDataSetIterator(recordReader, 10, 1, outputNum);
+        DataSetIterator dataIter = new RecordReaderDataSetIterator(recordReader, 2, 1, outputNum);
 
         while (dataIter.hasNext()) {
             DataSet ds = dataIter.next();
