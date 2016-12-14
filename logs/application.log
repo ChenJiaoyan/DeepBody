@@ -1,1 +1,653 @@
 
+2016-12-14 09:49:28,026 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:49:28,076 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:52:19,806 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:52:19,818 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:52:50,921 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:52:50,933 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:53:23,662 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:53:23,676 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:53:39,514 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:53:39,526 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:54:12,202 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:54:12,215 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:54:25,489 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:54:25,502 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:55:26,093 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:55:26,106 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:56:13,027 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:56:13,038 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:57:10,076 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:57:10,092 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 09:59:11,214 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 09:59:11,226 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:05:55,425 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:05:55,439 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:06:34,201 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:06:34,215 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:07:43,984 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:07:43,994 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:41:51,906 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:41:51,920 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:41:55,506 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 10:41:55,506 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 10:44:26,649 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:44:26,671 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:44:29,629 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 10:44:29,629 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 10:44:31,027 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.2948135719369678
+
+2016-12-14 10:44:31,261 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 0.760015733265696
+
+2016-12-14 10:46:23,909 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:46:23,923 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:46:25,909 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 10:46:25,909 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 10:46:26,165 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.2948135719369678
+
+2016-12-14 10:46:26,398 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 0.760015733265696
+
+2016-12-14 10:47:06,067 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:47:06,079 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:47:08,066 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 10:47:08,066 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 10:47:08,323 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.2948135719369678
+
+2016-12-14 10:47:08,529 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 0.760015733265696
+
+2016-12-14 10:47:36,186 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:47:36,201 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:47:38,197 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 10:47:38,197 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 10:47:38,448 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.2948135719369678
+
+2016-12-14 10:47:38,661 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 0.760015733265696
+
+2016-12-14 10:47:38,898 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 20 is 0.1300020586046487
+
+2016-12-14 10:47:39,436 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 30 is 0.04480467393351727
+
+2016-12-14 10:47:40,423 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 40 is 0.01845229577146647
+
+2016-12-14 10:47:41,602 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 50 is 0.0071726425514725325
+
+2016-12-14 10:48:26,146 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:48:26,195 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:48:31,145 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 10:48:31,145 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 10:48:31,518 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.2948135719369678
+
+2016-12-14 10:48:31,757 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 0.6834056336001177
+
+2016-12-14 10:48:31,969 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 20 is 0.16298940621779986
+
+2016-12-14 10:48:32,197 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 30 is 0.02497355085470116
+
+2016-12-14 10:48:32,393 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 40 is 0.015697607186182738
+
+2016-12-14 10:48:32,595 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 50 is 0.006821648889494793
+
+2016-12-14 10:49:03,512 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 10:49:03,524 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 10:49:05,465 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 10:49:05,465 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 10:49:05,988 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.2762893100758987
+
+2016-12-14 10:49:11,887 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 0.21742193661708692
+
+2016-12-14 10:49:39,620 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 20 is 0.06979227930645739
+
+2016-12-14 11:08:20,990 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 11:08:21,026 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 11:08:23,793 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 11:08:23,793 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 11:08:24,654 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.3660158380593055
+
+2016-12-14 11:08:24,960 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 0.5999073866330118
+
+2016-12-14 11:08:25,243 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 20 is 0.12585410858755658
+
+2016-12-14 11:08:25,527 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 30 is 0.03138354196395253
+
+2016-12-14 11:08:25,799 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 40 is 0.011017851192561552
+
+2016-12-14 11:08:26,084 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 50 is 0.008857437451742056
+
+2016-12-14 11:14:16,397 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 11:14:16,408 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 11:14:18,371 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 11:14:18,371 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 11:14:18,677 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.2665693288989848
+
+2016-12-14 11:14:18,953 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 0.7333929285654779
+
+2016-12-14 11:14:19,225 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 20 is 0.10883224704151218
+
+2016-12-14 11:14:19,501 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 30 is 0.013361809024842092
+
+2016-12-14 11:14:19,758 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 40 is 0.014156688002133662
+
+2016-12-14 11:14:20,021 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 50 is 0.006947717649359185
+
+2016-12-14 11:14:55,547 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 11:14:55,560 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 11:14:57,462 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 11:14:57,462 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 11:14:57,728 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.2665693288989848
+
+2016-12-14 11:14:57,980 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 0.9331752480754782
+
+2016-12-14 11:14:58,258 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 20 is 0.10196684429009109
+
+2016-12-14 11:14:58,524 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 30 is 0.023904610713391852
+
+2016-12-14 11:14:58,781 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 40 is 0.017495923248111007
+
+2016-12-14 11:14:59,046 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 50 is 0.007248235337927156
+
+2016-12-14 11:23:21,885 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 11:23:21,899 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:23:23,814 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:23:23,815 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:23:23,815 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:23:23,815 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:23:23,815 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:23:23,817 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 11:23:23,817 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 11:23:24,128 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.1214699745178223
+
+2016-12-14 11:23:24,631 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 1.0258233547210693
+
+2016-12-14 11:23:25,144 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 20 is 1.0242905616760254
+
+2016-12-14 11:23:25,621 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 30 is 1.042902946472168
+
+2016-12-14 11:23:26,083 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 40 is 0.9565498232841492
+
+2016-12-14 11:23:26,566 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 50 is 0.9352037906646729
+
+2016-12-14 11:24:42,336 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 11:24:42,351 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 11:24:44,284 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:24:44,284 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-14 11:24:44,285 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-14 11:24:44,287 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-14 11:24:44,287 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-14 11:24:44,590 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 0 is 1.093436360359192
+
+2016-12-14 11:24:44,836 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 10 is 1.0644303560256958
+
+2016-12-14 11:24:45,070 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 20 is 1.0963062047958374
+
+2016-12-14 11:24:45,318 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 30 is 1.0614241361618042
+
+2016-12-14 11:24:45,563 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 40 is 1.027867078781128
+
+2016-12-14 11:24:45,797 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in main
+                
+Score at iteration 50 is 1.0475943088531494
+
