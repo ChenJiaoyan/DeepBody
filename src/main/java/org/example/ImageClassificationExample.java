@@ -1,4 +1,4 @@
-package org.deepbody;
+package org.example;
 
 
 import org.datavec.api.io.filters.BalancedPathFilter;
@@ -119,8 +119,6 @@ public class ImageClassificationExample {
                         .build())
                 .backprop(true).pretrain(false)
                 .cnnInputSize(height, width, channels).build();
-
-
 
 
         MultiLayerNetwork model = new MultiLayerNetwork(conf);
