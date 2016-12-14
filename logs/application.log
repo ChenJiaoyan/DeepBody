@@ -1,1 +1,49 @@
 
+2016-12-13 23:37:45,072 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-13 23:37:45,107 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-13 23:47:46,552 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-13 23:47:46,583 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-13 23:59:19,815 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-13 23:59:19,846 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 00:00:14,503 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 00:00:14,536 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 00:35:26,841 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 00:35:26,872 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-14 00:37:11,704 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-14 00:37:11,742 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
