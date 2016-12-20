@@ -7,7 +7,7 @@
     <version>0.1-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
 
-    <name>DeepLearning4j Examples</name>
+    <name>Body Recognation</name>
 
     <repositories>
         <repository>
@@ -37,6 +37,8 @@
         <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
         <exec-maven-plugin.version>1.4.0</exec-maven-plugin.version>
         <maven.minimum.version>3.3.1</maven.minimum.version>
+        <log4j.version>1.2.12</log4j.version>
+        <httpclient.version>4.3.5</httpclient.version>
     </properties>
 
     <distributionManagement>
@@ -129,12 +131,12 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.3.5</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.12</version>
+            <version>${log4j.version}</version>
         </dependency>
     </dependencies>
 
