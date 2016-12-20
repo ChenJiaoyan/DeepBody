@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -14,7 +13,7 @@ import javax.swing.*;
  * Created by john on 20.12.16.
  */
 public class SampleLabeling {
-    protected static String label = "L_EYE";
+    protected static String label = "L_WAIST";
     protected static String img_f = "207034429.jpg";
     public static void main(String args []) throws IOException {
         File f = new File(System.getProperty("user.dir"),"src/main/resources/Body/Image/"+img_f);
