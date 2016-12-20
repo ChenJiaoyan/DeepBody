@@ -651,3 +651,355 @@ Score at iteration 40 is 1.027867078781128
                 
 Score at iteration 50 is 1.0475943088531494
 
+2016-12-21 00:18:30,251 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-21 00:18:30,305 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-21 00:18:34,279 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:18:34,279 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:18:34,279 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:18:34,280 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:18:34,283 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-21 00:18:34,283 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-21 00:18:57,479 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-21 00:18:57,523 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-21 00:19:01,167 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:01,167 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:01,168 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:01,171 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-21 00:19:01,172 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-21 00:19:29,197 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-21 00:19:29,232 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-21 00:19:32,866 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:32,866 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:32,866 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:32,867 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:32,869 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:32,869 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:19:32,869 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:19:32,869 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:19:32,873 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-21 00:19:32,873 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
+2016-12-21 00:20:57,657 - [INFO] - from org.nd4j.nativeblas.NativeOps in main
+                
+Number of threads used for NativeOps: 4
+
+2016-12-21 00:20:57,729 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in main
+                
+Number of threads used for BLAS: 4
+
+2016-12-21 00:21:01,287 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:21:01,287 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:21:01,287 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:21:01,287 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:21:01,287 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:21:01,287 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxpool1" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:21:01,287 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer cnn2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer maxool2" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" momentum has been set but will not be applied unless the updater is set to NESTEROVS.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" rmsDecay is automatically set to 0.95. Add rmsDecay to configuration to change the value.
+
+2016-12-21 00:21:01,288 - [WARN] - from org.deeplearning4j.nn.conf.NeuralNetConfiguration in main
+                
+Layer "Layer not named" l1 or l2 has been added to configuration but useRegularization is set to false.
+
+2016-12-21 00:21:01,291 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets pretrain to false.
+
+2016-12-21 00:21:01,291 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in main
+                
+Warning: new network default sets backprop to true.
+
