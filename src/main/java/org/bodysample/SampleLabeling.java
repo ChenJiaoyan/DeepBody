@@ -18,32 +18,41 @@ public class SampleLabeling {
     protected static int width = 960;
     protected static int height = 1280;
     protected static int rate = 2;
-    public static void main(String args []) throws IOException {
-        File f = new File(System.getProperty("user.dir"),"src/main/resources/Body/Image/"+img_f);
+
+    public static void main(String args[]) throws IOException {
+        File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/" + img_f);
         BufferedImage image = ImageIO.read(f);
 
         //rescale the image to ensure the whole image is displayed
         //in sampling, do NOT enlarge the window
-        Image dimg = image.getScaledInstance(width/rate, height/rate, Image.SCALE_SMOOTH);
+        Image dimg = image.getScaledInstance(width / rate, height / rate, Image.SCALE_SMOOTH);
         ImageIcon icon = new ImageIcon(dimg);
         JLabel imageLabel = new JLabel(icon);
         imageLabel.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int x = e.getX()*rate;
-                int y = e.getY()*rate;
+                int x = e.getX() * rate;
+                int y = e.getY() * rate;
                 String s = img_f + "," + x + "," + y + "," + label;
                 System.out.println(s);
-                JOptionPane.showMessageDialog(imageLabel, "x: "+x+", y: "+y);
+                JOptionPane.showMessageDialog(imageLabel, "x: " + x + ", y: " + y);
             }
+
             @Override
-            public void mouseEntered(MouseEvent e){}
+            public void mouseEntered(MouseEvent e) {
+            }
+
             @Override
-            public void mouseReleased(MouseEvent e){}
+            public void mouseReleased(MouseEvent e) {
+            }
+
             @Override
-            public void mouseExited(MouseEvent e){}
+            public void mouseExited(MouseEvent e) {
+            }
+
             @Override
-            public void mousePressed(MouseEvent e){}
+            public void mousePressed(MouseEvent e) {
+            }
 
         });
         imageLabel.validate();
