@@ -31,6 +31,7 @@ import org.nd4j.linalg.lossfunctions.LossFunctions;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -116,11 +117,15 @@ public class ImageClassificationExample {
         Evaluation eval = new Evaluation(outputNum);
 
         while (testIter.hasNext()) {
+            System.out.println("---------------------------------");
             DataSet next = testIter.next();
             System.out.println(Arrays.toString(next.getFeatureMatrix().shape()));
             INDArray output = model.output(next.getFeatureMatrix());
-            System.out.println("---------------------------------");
+            int [] o = model.predict(next.getFeatureMatrix());
+            List<String> o2 = model.predict(next);
             System.out.println(output);
+            System.out.println(Arrays.toString(o));
+            System.out.println(o2);
             eval.eval(next.getLabels(), output);
         }
         System.out.println("eval.stats:");
