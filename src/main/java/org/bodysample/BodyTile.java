@@ -32,6 +32,10 @@ public class BodyTile {
             String label = tmp[3];
             String des_fname = src_fname.substring(0, src_fname.length() - 4) + "_" + x + "_" + y + ".jpg";
             File src_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/" + src_fname);
+            File des_dir = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + type + "/" + label);
+            if(!des_dir.exists()){
+                des_dir.mkdir();
+            }
             File des_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + type + "/" + label + "/" + des_fname);
             cut(src_f, des_f, x - width / 2, y - height / 2);
             line = br.readLine();

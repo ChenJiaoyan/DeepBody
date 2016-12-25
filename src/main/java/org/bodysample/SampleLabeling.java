@@ -13,8 +13,8 @@ import javax.swing.*;
  * Created by john on 20.12.16.
  */
 public class SampleLabeling {
-    protected static String label = "L_SHOULDER";
-    protected static String img_f = "207034429.jpg";
+    protected static String label = "OTHER";
+    protected static String img_f = "1313883841.jpg"; //front: 207034429.jpg 290323911.jpg 1313883841.jpg
     protected static int width = 960;
     protected static int height = 1280;
     protected static int rate = 2;
@@ -35,7 +35,7 @@ public class SampleLabeling {
                 int y = e.getY() * rate;
                 String s = img_f + "," + x + "," + y + "," + label;
                 System.out.println(s);
-                JOptionPane.showMessageDialog(imageLabel, "x: " + x + ", y: " + y);
+                //JOptionPane.showMessageDialog(imageLabel, "x: " + x + ", y: " + y);
             }
 
             @Override
