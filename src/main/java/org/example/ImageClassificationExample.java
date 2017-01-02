@@ -49,7 +49,7 @@ public class ImageClassificationExample {
     private static int outputNum = 3;
     private static int numEpochs = 10;
     private static int batchSize = 5;
-    private static int iterations = 1;
+    private static int iterations = 10;
 
     public static void main(String args[]) throws IOException {
         String filename = new ClassPathResource("/DataExamples/ImagePipeline/").getFile().getPath();

@@ -20,7 +20,7 @@ public class SampleLabeling {
     protected static int rate = 2;
 
     public static void main(String args[]) throws IOException {
-        File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/" + img_f);
+        File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/front" + img_f);
         BufferedImage image = ImageIO.read(f);
 
         //rescale the image to ensure the whole image is displayed

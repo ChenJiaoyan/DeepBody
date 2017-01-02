@@ -42,8 +42,8 @@ public class FrontPixelClassification {
     protected static int height = 64;
     protected static int width = 64;
     protected static int channels = 3;
-    protected static int labelNum = 3;
-    protected static int numEpochs = 100;
+    protected static int labelNum = 11;
+    protected static int numEpochs = 1;
     protected static int batchSize = 30;
     protected static int iterations = 1;
 
@@ -65,6 +65,7 @@ public class FrontPixelClassification {
         InputSplit[] filesInDirSplit = filesInDir.sample(pathFilter, 75, 25);
         InputSplit trainData = filesInDirSplit[0];
         InputSplit testData = filesInDirSplit[1];
+        iterations = (int) (trainData.length() / batchSize);
 
         ImageRecordReader recordReader = new ImageRecordReader(height,width,channels,labelMaker);
         DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
@@ -117,11 +118,17 @@ public class FrontPixelClassification {
 
         System.out.println(recordReader.getLabels().toString());
 
+        // can also load a existed model
+        /*File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + model_f);
+        MultiLayerNetwork model = ModelSerializer.restoreMultiLayerNetwork(f);*/
+
         Evaluation eval = new Evaluation(labelNum);
         while(testIter.hasNext()){
             DataSet next = testIter.next();
             INDArray output = model.output(next.getFeatureMatrix());
             eval.eval(next.getLabels(),output);
+            System.out.println(next.getLabels().toString());
+            System.out.println(output.toString());
         }
         System.out.println(eval.stats());
 
