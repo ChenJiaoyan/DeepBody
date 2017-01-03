@@ -31,8 +31,8 @@ import java.util.Random;
 
 /**
  * Created by john on 14.12.16.
- * Locate the position with the classified pixels
  */
+
 public class FrontPredict {
     private File model_f;
     private File predict_f;
@@ -60,7 +60,8 @@ public class FrontPredict {
 
     public FrontPredict(String model_file, String predict_file) throws IOException {
         this.model_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + model_file);
-        this.predict_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Prediction/" + predict_file);
+        this.predict_f = new File(System.getProperty("user.dir"),
+                "src/main/resources/Body/Prediction/" + predict_file);
 
         this.seed = 12345;
         this.allowedExtensions = BaseImageLoader.ALLOWED_FORMATS;
@@ -80,6 +81,7 @@ public class FrontPredict {
         this.labelNum = Integer.parseInt(properties.getProperty("labelNum"));
         this.channels = Integer.parseInt(properties.getProperty("channels"));
         this.slide_stride = Integer.parseInt(properties.getProperty("slide_stride"));
+
     }
 
 
@@ -162,6 +164,7 @@ public class FrontPredict {
     /**
      * draw dots on predict image
      */
+
     public void showResult() {
 
         JFrame frame = new JFrame();

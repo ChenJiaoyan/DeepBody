@@ -13,14 +13,14 @@ import javax.swing.*;
  * Created by john on 20.12.16.
  */
 public class SampleLabeling {
-    protected static String label = "OTHER";
-    protected static String img_f = "1313883841.jpg"; //front: 207034429.jpg 290323911.jpg 1313883841.jpg
+    protected static String label = "L_EYE";
+    protected static String img_f = "207034429.jpg"; //front: 207034429.jpg 290323911.jpg 1313883841.jpg
     protected static int width = 960;
     protected static int height = 1280;
     protected static int rate = 2;
 
     public static void main(String args[]) throws IOException {
-        File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/front" + img_f);
+        File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/front/" + img_f);
         BufferedImage image = ImageIO.read(f);
 
         //rescale the image to ensure the whole image is displayed
