@@ -174,7 +174,7 @@ public class FrontPixelClassification {
                 dropOut = 0.5;
                 conf = new NeuralNetConfiguration.Builder()
                         .seed(seed)
-                        .iterations(1)
+                        .iterations(iterations)
                         .regularization(true).l2(0.0005)
                         .learningRate(.01)
                         .weightInit(WeightInit.XAVIER)
@@ -192,7 +192,6 @@ public class FrontPixelClassification {
                                 .stride(2, 2)
                                 .build())
                         .layer(2, new ConvolutionLayer.Builder(5, 5)
-                                //Note that nIn need not be specified in later layers
                                 .stride(1, 1)
                                 .nOut(50)
                                 .activation("identity")
