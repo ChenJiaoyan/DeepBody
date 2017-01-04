@@ -53,7 +53,7 @@ public class FrontPredict {
     ArrayList<int[]> locations;
 
     public static void main(String args[]) throws IOException {
-        FrontPredict p = new FrontPredict("Body/Front_CNN_1.zip", "Body/Image/front/207034429.jpg");
+        FrontPredict p = new FrontPredict("Body/Front_CNN_1.zip", "Body/Image/Front/207034429.jpg");
         p.predict();
         p.showResult();
     }

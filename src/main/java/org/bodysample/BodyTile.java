@@ -16,27 +16,30 @@ public class BodyTile {
     protected static int height = 64;
     protected static int width = 64;
     protected static String type = "Front";
-    protected static String sample_f = type + "_Sample_Locations";
+    protected static String sample_f = type + "_Sample_1";
 
     public static void main(String args[]) throws IOException {
         File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + sample_f);
         InputStreamReader reader = new InputStreamReader(new FileInputStream(f));
         BufferedReader br = new BufferedReader(reader);
-        String line = br.readLine();        //to skip the first line
-        line = br.readLine();
+        String line = br.readLine();
         while (line != null) {
             String[] tmp = line.split(",");
             String src_fname = tmp[0];
             int x = Integer.parseInt(tmp[1]);
             int y = Integer.parseInt(tmp[2]);
             String label = tmp[3];
-            String des_fname = src_fname.substring(0, src_fname.length() - 4) + "_" + x + "_" + y + ".jpg";
-            File src_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/" + src_fname);
-            File des_dir = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + type + "/" + label);
+            File src_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/" + type+"/" +
+                    src_fname);
+
+            File des_dir = new File(System.getProperty("user.dir"), "src/main/resources/Body/Tiles_" + type +
+                    "_1/" + label);
             if(!des_dir.exists()){
                 des_dir.mkdir();
             }
-            File des_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + type + "/" + label + "/" + des_fname);
+            String des_fname = src_fname.substring(0, src_fname.length() - 4) + "_" + x + "_" + y + ".jpg";
+            File des_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Tiles_" + type + "_1/"
+                    + label + "/" + des_fname);
             cut(src_f, des_f, x - width / 2, y - height / 2);
             line = br.readLine();
         }
