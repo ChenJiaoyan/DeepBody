@@ -7679,3 +7679,203 @@ Warning: new network default sets backprop to true.
                 
 Score at iteration 0 is 2.766683745290228
 
+2017-01-04 10:07:28,384 - [INFO] - from org.nd4j.nativeblas.NativeOps in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for NativeOps: 10
+
+2017-01-04 10:07:28,401 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for BLAS: 10
+
+2017-01-04 10:07:30,409 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets pretrain to false.
+
+2017-01-04 10:07:30,409 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets backprop to true.
+
+2017-01-04 10:07:32,417 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 0 is 2.529293450659543
+
+2017-01-04 10:22:39,222 - [INFO] - from org.nd4j.nativeblas.NativeOps in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for NativeOps: 10
+
+2017-01-04 10:22:39,248 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for BLAS: 10
+
+2017-01-04 10:22:41,374 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets pretrain to false.
+
+2017-01-04 10:22:41,374 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets backprop to true.
+
+2017-01-04 10:22:42,065 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 0 is 2.512558247949758
+
+2017-01-04 10:29:21,964 - [INFO] - from org.nd4j.nativeblas.NativeOps in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for NativeOps: 10
+
+2017-01-04 10:29:21,982 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for BLAS: 10
+
+2017-01-04 10:29:24,246 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets pretrain to false.
+
+2017-01-04 10:29:24,246 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets backprop to true.
+
+2017-01-04 10:29:24,809 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 0 is 2.4786698864024457
+
+2017-01-04 10:29:28,907 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 50 is 0.5891069618913901
+
+2017-01-04 10:29:31,377 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 100 is 0.5933043638562296
+
+2017-01-04 10:29:34,356 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 150 is 0.2111933169795998
+
+2017-01-04 10:29:39,859 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 200 is 0.13830399125314236
+
+2017-01-04 10:29:43,114 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 250 is 0.12003236176455996
+
+2017-01-04 10:31:30,783 - [INFO] - from org.nd4j.nativeblas.NativeOps in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for NativeOps: 10
+
+2017-01-04 10:31:30,800 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for BLAS: 10
+
+2017-01-04 10:31:32,951 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets pretrain to false.
+
+2017-01-04 10:31:32,951 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets backprop to true.
+
+2017-01-04 10:31:33,565 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 0 is 2.4786698864024457
+
+2017-01-04 10:31:36,696 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 50 is 0.5891069618913901
+
+2017-01-04 10:31:39,628 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 100 is 0.5933043638562296
+
+2017-01-04 10:31:41,518 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 150 is 0.2111933169795998
+
+2017-01-04 10:31:44,394 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 200 is 0.13830399125314236
+
+2017-01-04 10:31:46,872 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 250 is 0.12003236176455996
+
+2017-01-04 10:36:40,311 - [INFO] - from org.nd4j.nativeblas.NativeOps in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for NativeOps: 10
+
+2017-01-04 10:36:40,328 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for BLAS: 10
+
+2017-01-04 10:36:42,424 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets pretrain to false.
+
+2017-01-04 10:36:42,424 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets backprop to true.
+
+2017-01-04 10:36:43,128 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 0 is 2.4786698864024457
+
+2017-01-04 10:36:47,016 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 50 is 0.5891069618913901
+
+2017-01-04 10:36:50,206 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 100 is 0.5933043638562296
+
+2017-01-04 10:36:53,252 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 150 is 0.2111933169795998
+
+2017-01-04 10:36:56,834 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 200 is 0.13830399125314236
+
+2017-01-04 10:37:00,127 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 250 is 0.12003236176455996
+
+2017-01-04 10:39:00,054 - [INFO] - from org.nd4j.nativeblas.NativeOps in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for NativeOps: 10
+
+2017-01-04 10:39:00,078 - [INFO] - from org.nd4j.nativeblas.Nd4jBlas in org.deepbody.FrontPixelClassification.main()
+                
+Number of threads used for BLAS: 10
+
+2017-01-04 10:39:02,242 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets pretrain to false.
+
+2017-01-04 10:39:02,243 - [WARN] - from org.deeplearning4j.nn.conf.MultiLayerConfiguration in org.deepbody.FrontPixelClassification.main()
+                
+Warning: new network default sets backprop to true.
+
+2017-01-04 10:39:03,070 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 0 is 2.4397821618698394
+
+2017-01-04 10:39:22,029 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 50 is NaN
+
+2017-01-04 10:39:39,697 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 100 is NaN
+
+2017-01-04 10:39:57,543 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 150 is NaN
+
+2017-01-04 10:40:17,240 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 200 is NaN
+
+2017-01-04 10:40:35,829 - [INFO] - from org.deeplearning4j.optimize.listeners.ScoreIterationListener in org.deepbody.FrontPixelClassification.main()
+                
+Score at iteration 250 is NaN
+

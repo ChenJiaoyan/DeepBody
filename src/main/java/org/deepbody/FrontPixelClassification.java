@@ -65,9 +65,9 @@ public class FrontPixelClassification {
         model_f = "Front_CNN_1.zip";
         tiles_dir = "Tiles_Front_1";
 
-        ann_type = "alexnet";
-        numEpochs = 20;
-        batchSize = 40;
+        ann_type = "lenet";
+        numEpochs = 30;
+        batchSize = 20;
         iterations = 1;
 
 
@@ -107,7 +107,7 @@ public class FrontPixelClassification {
         System.out.println("**** Build Model ****");
         MultiLayerConfiguration conf = ANN_config();
         MultiLayerNetwork model = new MultiLayerNetwork(conf);
-        model.setListeners(new ScoreIterationListener(100));
+        model.setListeners(new ScoreIterationListener(50));
 
         System.out.println("**** Train Model ****");
         for (int i = 0; i < numEpochs; i++) {
@@ -170,6 +170,7 @@ public class FrontPixelClassification {
                         .backprop(true).pretrain(false).build();
                 break;
             case "lenet":
+		System.out.println("lenet");
                 nonZeroBias = 1;
                 dropOut = 0.5;
                 conf = new NeuralNetConfiguration.Builder()
@@ -208,6 +209,7 @@ public class FrontPixelClassification {
                                 .build())
                         .setInputType(InputType.convolutionalFlat(tile_height, tile_width, channels)) //See note below
                         .backprop(true).pretrain(false).build();
+		break;
             default:
                 conf = new NeuralNetConfiguration.Builder()
                         .seed(seed)
