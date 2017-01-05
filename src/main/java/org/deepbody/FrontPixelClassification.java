@@ -30,6 +30,7 @@ import org.nd4j.linalg.lossfunctions.LossFunctions;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.Random;
 
@@ -57,17 +58,25 @@ public class FrontPixelClassification {
     private Random randNumGen;
 
     public static void main(String args[]) throws IOException {
-        FrontPixelClassification classification = new FrontPixelClassification();
+        System.out.println("parameters: " + Arrays.toString(args));
+        String ann_type = args[0];
+        int numEpochs = Integer.parseInt(args[1]);
+        int batchSize = Integer.parseInt(args[2]);
+        FrontPixelClassification classification = new FrontPixelClassification(ann_type,numEpochs,batchSize);
         classification.learn();
     }
 
-    public FrontPixelClassification() throws IOException {
+    public FrontPixelClassification(String ann_type,int numEpochs,int batchSize) throws IOException {
         model_f = "Front_CNN_1.zip";
         tiles_dir = "Tiles_Front_1";
 
-        ann_type = "lenet";
-        numEpochs = 30;
-        batchSize = 20;
+
+        this.ann_type = ann_type;
+        //this.ann_type = "lenet";
+        //this.numEpochs = 20;
+        this.numEpochs = numEpochs;
+        //this.batchSize = 40;
+        this.batchSize = batchSize;
         iterations = 1;
 
 
@@ -87,7 +96,7 @@ public class FrontPixelClassification {
 
     public void learn() throws IOException {
         System.out.println("**** Load Data ****");
-        String filename = new ClassPathResource("/Body/"+tiles_dir).getFile().getPath();
+        String filename = new ClassPathResource("/Body/" + tiles_dir).getFile().getPath();
         File parentDir = new File(filename);
         FileSplit filesInDir = new FileSplit(parentDir, allowedExtensions, randNumGen);
         ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
@@ -138,6 +147,7 @@ public class FrontPixelClassification {
         double dropOut;
         switch (ann_type) {
             case "alexnet":
+                System.out.println("network type: alexnet");
                 nonZeroBias = 1;
                 dropOut = 0.5;
                 conf = new NeuralNetConfiguration.Builder()
@@ -170,7 +180,7 @@ public class FrontPixelClassification {
                         .backprop(true).pretrain(false).build();
                 break;
             case "lenet":
-		System.out.println("lenet");
+                System.out.println("network type: lenet");
                 nonZeroBias = 1;
                 dropOut = 0.5;
                 conf = new NeuralNetConfiguration.Builder()
@@ -209,8 +219,9 @@ public class FrontPixelClassification {
                                 .build())
                         .setInputType(InputType.convolutionalFlat(tile_height, tile_width, channels)) //See note below
                         .backprop(true).pretrain(false).build();
-		break;
+                break;
             default:
+                System.out.println("network type: mln");
                 conf = new NeuralNetConfiguration.Builder()
                         .seed(seed)
                         .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
@@ -254,6 +265,7 @@ public class FrontPixelClassification {
     private ConvolutionLayer conv3x3(String name, int out, double bias) {
         return new ConvolutionLayer.Builder(new int[]{3, 3}, new int[]{1, 1}, new int[]{1, 1}).name(name).nOut(out).biasInit(bias).build();
     }
+
     private static DenseLayer fullyConnected(String name, int out, double bias, double dropOut, Distribution dist) {
         return new DenseLayer.Builder().name(name).nOut(out).biasInit(bias).dropOut(dropOut).dist(dist).build();
     }
