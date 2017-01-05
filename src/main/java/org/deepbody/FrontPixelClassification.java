@@ -65,9 +65,10 @@ public class FrontPixelClassification {
         model_f = "Front_CNN_1.zip";
         tiles_dir = "Tiles_Front_1";
 
-        ann_type = "lenet";
-        numEpochs = 30;
-        batchSize = 20;
+        //ann_type = "lenet";
+	ann_type = "";
+        numEpochs = 20;
+        batchSize = 30;
         iterations = 1;
 
 
