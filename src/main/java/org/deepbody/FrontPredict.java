@@ -51,10 +51,10 @@ public class FrontPredict {
 
     public static void main(String args[]) throws IOException {
         System.out.println("Parameters: " + Arrays.toString(args));
-//        String img_file = "207034429.jpg";
-        String img_file = args[0];
-//        int slide_stride = 2;
-        int slide_stride = Integer.parseInt(args[1]);
+        String img_file = "207034429.jpg";
+//        String img_file = args[0];
+        int slide_stride = 2;
+//        int slide_stride = Integer.parseInt(args[1]);
         FrontPredict p = new FrontPredict("Body/Front_CNN_1.zip", img_file,slide_stride);
         p.predict();
         ArrayList<int []> locations = p.getLocations();
