@@ -165,7 +165,7 @@ public class FrontPredict {
         int row_n = (int) Math.ceil((img_height - tile_height) / (double) slide_stride);
         int col_n = (int) Math.ceil((img_width - tile_width) / (double) slide_stride);
         INDArray m = ds.getFeatureMatrix().getRow(0);
-        System.out.println(Arrays.toString(m.shape()));
+        System.out.println("row_n: " + row_n + "  col_n: " + col_n);
         INDArray out = Nd4j.zeros(row_n, col_n, channels, tile_height, tile_width);
         for (int y = 0, r = 0; y < img_height - tile_height; y = y + slide_stride, r = r + 1) {
             for (int x = 0, c = 0; x < img_width - tile_width; x = x + slide_stride, c = c + 1) {
