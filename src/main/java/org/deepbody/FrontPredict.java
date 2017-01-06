@@ -130,7 +130,9 @@ public class FrontPredict {
                                 locs.add(loc);
                                 m.put(label, locs);
                             } else {
-                                m.get(label).add(loc);
+                                ArrayList<int []> locs = m.get(label);
+                                locs.add(loc);
+                                m.put(label,locs);
                             }
                             break;
                         }
