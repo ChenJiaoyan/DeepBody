@@ -18,14 +18,12 @@ import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.indexing.NDArrayIndex;
 
 import javax.imageio.ImageIO;
+import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Properties;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by john on 14.12.16.
@@ -44,6 +42,8 @@ public class FrontPredict {
     private int channels;
     private int labelNum;
 
+    private double decision_threshold;
+
     private int slide_stride;
 
     INDArray output;
@@ -55,12 +55,14 @@ public class FrontPredict {
         String img_file = args[0];
 //        int slide_stride = 2;
         int slide_stride = Integer.parseInt(args[1]);
-        FrontPredict p = new FrontPredict("Front_CNN_1.zip", img_file,slide_stride);
+//        double decision_threshold = 0.8;
+        double decision_threshold = Double.parseDouble(args[2]);
+        FrontPredict p = new FrontPredict("Front_CNN_1.zip", img_file, slide_stride, decision_threshold);
         p.predict();
-        ArrayList<int []> locations = p.getLocations();
+        ArrayList<int[]> locations = p.getLocations();
         String result = img_file;
-        for(int i=0;i<locations.size();i++){
-            int [] location = locations.get(i);
+        for (int i = 0; i < locations.size(); i++) {
+            int[] location = locations.get(i);
             int r = location[0];
             int c = location[1];
             result = result + ";" + r + "," + c;
@@ -69,13 +71,13 @@ public class FrontPredict {
     }
 
     public FrontPredict(String model_file, String predict_file,
-                        int slide_stride) throws IOException {
+                        int slide_stride, double decision_threshold) throws IOException {
         this.model_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + model_file);
         this.predict_f = new File(System.getProperty("user.dir"),
                 "src/main/resources/Body/Prediction/Front/" + predict_file);
 
         this.slide_stride = slide_stride;
-
+        this.decision_threshold = decision_threshold;
 
         long seed = 12345;
         this.allowedExtensions = BaseImageLoader.ALLOWED_FORMATS;
@@ -113,37 +115,57 @@ public class FrontPredict {
     //that are predicted as that body part
     private void cal_location() {
         locations = new ArrayList<>();
-        int[] r_sums = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        int[] c_sums = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        int[] nums = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        HashMap<Integer, ArrayList<int[]>> m = new HashMap<>();
         for (int r = 0; r < output.shape()[0]; r++) {
             for (int c = 0; c < output.shape()[1]; c++) {
-                double maxL = 0.0;
-                int labelL = 0;
                 for (int label = 0; label < labelNum; label++) {
-                    double l = output.getDouble(r, c, label);
-                    if (l > maxL) {
-                        maxL = l;
-                        labelL = label;
-                    }
-                }
+                    if (label == 5) {
+                        continue;
+                    } else {
+                        if (output.getDouble(r, c, label) >= decision_threshold) {
+                            int loc_y = r * slide_stride + tile_height / 2;
+                            int loc_x = c * slide_stride + tile_width / 2;
+                            int[] loc = {loc_x, loc_y};
+                            if (m.containsKey(label)) {
+                                ArrayList<int[]> locs = new ArrayList<>();
+                                locs.add(loc);
+                                m.put(label, locs);
+                            } else {
+                                m.get(label).add(loc);
+                            }
+                            break;
+                        }
 
-                // when the probability >= 0.8, we think it's a effective predict and take it for calculation
-                if (maxL >= 0.8) {
-                    nums[labelL]++;
-                    r_sums[labelL] += r * slide_stride + 32; //r*slide_stride+32 is the estimate position on real image coordinate
-                    c_sums[labelL] += c * slide_stride + 32;
+                    }
                 }
             }
         }
-        for (int i = 0; i < labelNum; i++) {
-            if (nums[i] != 0 && i != 5) {
-                int[] loc = {r_sums[i] / nums[i], c_sums[i] / nums[i]};
-                locations.add(loc);
+        average_locs(m);
+    }
+
+    private void average_locs(HashMap<Integer, ArrayList<int[]>> m) {
+        for (int label = 0; label < labelNum; label++) {
+            if (labelNum != 5) {
+                if (m.containsKey(label)) {
+                    ArrayList<int[]> locs = m.get(label);
+                    int x_sum = 0;
+                    int y_sum = 0;
+                    for (int i = 0; i <= locs.size(); i++) {
+                        x_sum += locs.get(i)[0];
+                        y_sum += locs.get(i)[1];
+                    }
+                    int[] loc = {x_sum / locs.size(), y_sum / locs.size()};
+                    this.locations.add(loc);
+                } else {
+                    int[] loc = {-1, -1};
+                    this.locations.add(loc);
+                }
+            } else {
+                int[] loc = {0, 0};
+                this.locations.add(loc);
             }
         }
     }
-
 
     private INDArray slide() throws IOException {
 
@@ -178,10 +200,9 @@ public class FrontPredict {
     }
 
 
-    public ArrayList<int[]> getLocations(){
+    public ArrayList<int[]> getLocations() {
         return this.locations;
     }
-
 
 
 }
