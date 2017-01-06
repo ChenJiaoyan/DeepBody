@@ -1,7 +1,9 @@
 package org.deepbody;
 
+import org.datavec.api.io.filters.BalancedPathFilter;
 import org.datavec.api.io.labels.ParentPathLabelGenerator;
 import org.datavec.api.split.FileSplit;
+import org.datavec.api.split.InputSplit;
 import org.datavec.image.loader.BaseImageLoader;
 import org.datavec.image.recordreader.ImageRecordReader;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
@@ -41,7 +43,6 @@ public class FrontPredict {
     private int img_width;
     private int channels;
     private int labelNum;
-    private int batchSize;
 
     private int slide_stride;
 
@@ -50,9 +51,10 @@ public class FrontPredict {
 
     public static void main(String args[]) throws IOException {
         System.out.println("Parameters: " + Arrays.toString(args));
-//        String img_file = "207034429.jpg";
-        String img_file = args[0];
-        int slide_stride = Integer.parseInt(args[1]);
+        String img_file = "207034429.jpg";
+//        String img_file = args[0];
+        int slide_stride = 2;
+//        int slide_stride = Integer.parseInt(args[1]);
         FrontPredict p = new FrontPredict("Body/Front_CNN_1.zip", img_file,slide_stride);
         p.predict();
         ArrayList<int []> locations = p.getLocations();
@@ -79,7 +81,6 @@ public class FrontPredict {
         this.allowedExtensions = BaseImageLoader.ALLOWED_FORMATS;
         this.randNumGen = new Random(seed);
 
-        this.batchSize = 1;
 
         BufferedImage image = ImageIO.read(this.predict_f);
         this.img_height = image.getHeight();
@@ -145,12 +146,18 @@ public class FrontPredict {
 
 
     private INDArray slide() throws IOException {
+
         FileSplit filesInDir = new FileSplit(predict_f, allowedExtensions, randNumGen);
         ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
-        DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
+        BalancedPathFilter pathFilter = new BalancedPathFilter(randNumGen, allowedExtensions, labelMaker);
+        InputSplit[] filesInDirSplit = filesInDir.sample(pathFilter);
+        InputSplit is = filesInDirSplit[0];
+
         ImageRecordReader recordReader = new ImageRecordReader(img_height, img_width, channels, labelMaker);
-        recordReader.initialize(filesInDir);
-        DataSetIterator it = new RecordReaderDataSetIterator(recordReader, batchSize, 1, labelNum);
+        recordReader.initialize(is);
+        DataSetIterator it = new RecordReaderDataSetIterator(recordReader, 1, 1, labelNum);
+
+        DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
         scaler.fit(it);
         it.setPreProcessor(scaler);
         DataSet ds = it.next();
