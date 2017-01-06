@@ -1,9 +1,7 @@
 package org.deepbody;
 
-import org.datavec.api.io.filters.BalancedPathFilter;
 import org.datavec.api.io.labels.ParentPathLabelGenerator;
 import org.datavec.api.split.FileSplit;
-import org.datavec.api.split.InputSplit;
 import org.datavec.image.loader.BaseImageLoader;
 import org.datavec.image.recordreader.ImageRecordReader;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
@@ -16,10 +14,8 @@ import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.indexing.NDArrayIndex;
-import org.utils.DrawDotPanel;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -37,37 +33,53 @@ public class FrontPredict {
     private File model_f;
     private File predict_f;
 
-    private long seed;
     private final String[] allowedExtensions;
     private Random randNumGen;
     private int tile_height;
     private int tile_width;
-    private int slide_stride;
     private int img_height;
     private int img_width;
     private int channels;
     private int labelNum;
     private int batchSize;
 
+    private int slide_stride;
+
     INDArray output;
     ArrayList<int[]> locations;
 
     public static void main(String args[]) throws IOException {
-        FrontPredict p = new FrontPredict("Body/Front_CNN_1.zip", "Body/Image/Front/207034429.jpg");
+        System.out.println("Parameters: " + Arrays.toString(args));
+//        String img_file = "207034429.jpg";
+        String img_file = args[0];
+        int slide_stride = Integer.parseInt(args[1]);
+        FrontPredict p = new FrontPredict("Body/Front_CNN_1.zip", img_file,slide_stride);
         p.predict();
-        p.showResult();
+        ArrayList<int []> locations = p.getLocations();
+        String result = img_file;
+        for(int i=0;i<locations.size();i++){
+            int [] location = locations.get(i);
+            int r = location[0];
+            int c = location[1];
+            result = result + ";" + r + "," + c;
+        }
+        System.out.println(result);
     }
 
-    public FrontPredict(String model_file, String predict_file) throws IOException {
+    public FrontPredict(String model_file, String predict_file,
+                        int slide_stride) throws IOException {
         this.model_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + model_file);
         this.predict_f = new File(System.getProperty("user.dir"),
-                "src/main/resources/Body/Prediction/" + predict_file);
+                "src/main/resources/Body/Prediction/Front/" + predict_file);
 
-        this.seed = 12345;
+        this.slide_stride = slide_stride;
+
+
+        long seed = 12345;
         this.allowedExtensions = BaseImageLoader.ALLOWED_FORMATS;
         this.randNumGen = new Random(seed);
 
-        this.batchSize = 114;
+        this.batchSize = 1;
 
         BufferedImage image = ImageIO.read(this.predict_f);
         this.img_height = image.getHeight();
@@ -80,7 +92,6 @@ public class FrontPredict {
         this.tile_width = Integer.parseInt(properties.getProperty("tile_width"));
         this.labelNum = Integer.parseInt(properties.getProperty("labelNum"));
         this.channels = Integer.parseInt(properties.getProperty("channels"));
-        this.slide_stride = Integer.parseInt(properties.getProperty("slide_stride"));
 
     }
 
@@ -136,11 +147,9 @@ public class FrontPredict {
     private INDArray slide() throws IOException {
         FileSplit filesInDir = new FileSplit(predict_f, allowedExtensions, randNumGen);
         ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
-        BalancedPathFilter pathFilter = new BalancedPathFilter(randNumGen, allowedExtensions, labelMaker);
-        InputSplit d = filesInDir.sample(pathFilter)[0];
         DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
         ImageRecordReader recordReader = new ImageRecordReader(img_height, img_width, channels, labelMaker);
-        recordReader.initialize(d);
+        recordReader.initialize(filesInDir);
         DataSetIterator it = new RecordReaderDataSetIterator(recordReader, batchSize, 1, labelNum);
         scaler.fit(it);
         it.setPreProcessor(scaler);
@@ -161,35 +170,11 @@ public class FrontPredict {
         return out;
     }
 
-    /**
-     * draw dots on predict image
-     */
 
-    public void showResult() {
-
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(true);
-
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(predict_f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        DrawDotPanel panel = new DrawDotPanel(image);
-        frame.add(panel);
-
-        /**
-         *  dot[1] is the x position, dot[0] is the y position
-         */
-        for (int[] dot : locations) {
-            panel.drawDot(dot[1], dot[0]);
-        }
-
-        panel.repaint();
-        frame.pack();
-        frame.setVisible(true);
+    public ArrayList<int[]> getLocations(){
+        return this.locations;
     }
+
+
 
 }
