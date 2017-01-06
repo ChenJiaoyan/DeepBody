@@ -60,8 +60,11 @@ public class FrontPixelClassification {
     public static void main(String args[]) throws IOException {
         System.out.println("parameters: " + Arrays.toString(args));
         String ann_type = args[0];
+        //String ann_type = "lenet";
         int numEpochs = Integer.parseInt(args[1]);
+        //int numEpochs = 10;
         int batchSize = Integer.parseInt(args[2]);
+        //int batchSize = 45;
         FrontPixelClassification classification = new FrontPixelClassification(ann_type,numEpochs,batchSize);
         classification.learn();
     }
