@@ -56,8 +56,15 @@ public class FrontPredict {
         int slide_stride = Integer.parseInt(args[1]);
 //        double decision_threshold = 0.8;
         double decision_threshold = Double.parseDouble(args[2]);
+
+        System.out.println("#### Initialize ####");
         FrontPredict p = new FrontPredict("Front_CNN_1.zip", img_file, slide_stride, decision_threshold);
+        System.out.println("#### Predict Tiles ####");
         p.predict();
+        System.out.println("#### Calculate Locations ####");
+        p.cal_location();
+
+        System.out.println("----------------------- Results ----------------------");
         ArrayList<int[]> locations = p.getLocations();
         String result = img_file;
         for (int i = 0; i < locations.size(); i++) {
@@ -67,6 +74,7 @@ public class FrontPredict {
             result = result + ";" + r + "," + c;
         }
         System.out.println(result);
+        System.out.println("----------------------- Results ----------------------");
     }
 
     public FrontPredict(String model_file, String predict_file,
@@ -107,12 +115,11 @@ public class FrontPredict {
             INDArray label_int = model.output(tiles_r);
             output.getRow(r).assign(label_int);
         }
-        cal_location();
     }
 
     //location of a body part: calculate the average row/column of all the pixels
     //that are predicted as that body part
-    private void cal_location() {
+    public void cal_location() {
         locations = new ArrayList<>();
         HashMap<Integer, ArrayList<int[]>> m = new HashMap<>();
         for (int r = 0; r < output.shape()[0]; r++) {
@@ -125,7 +132,7 @@ public class FrontPredict {
                             int loc_y = r * slide_stride + tile_height / 2;
                             int loc_x = c * slide_stride + tile_width / 2;
                             int[] loc = {loc_x, loc_y};
-                            if (m.containsKey(label)) {
+                            if (!m.containsKey(label)) {
                                 ArrayList<int[]> locs = new ArrayList<>();
                                 locs.add(loc);
                                 m.put(label, locs);
