@@ -36,7 +36,7 @@ public class DrawDotPanel extends JPanel {
     //ths method will colour a pixel red
     public boolean drawDot(int x, int y) {
 
-        if (x > dims.getHeight() || y > dims.getWidth()) {
+        if (x<=0 || y<=0 || y >= dims.getHeight() || x >= dims.getWidth()) {
             return false;
         }
 
@@ -90,15 +90,15 @@ public class DrawDotPanel extends JPanel {
                 "src/main/resources/Body/Prediction/Front/" + img_name);
 
         while(line!=null){
-            line = br.readLine();
             if(line.startsWith(img_name)){
                 String [] tmp = line.split(";");
-                for(int i=0;i<tmp.length;i++){
+                for(int i=1;i<tmp.length;i++){
                     String [] tmp2 = tmp[i].split(",");
                     int [] loc = {Integer.parseInt(tmp2[0]),Integer.parseInt(tmp2[1])};
                     locations.add(loc);
                 }
             }
+            line = br.readLine();
         }
         showResult(predict_f,locations);
     }

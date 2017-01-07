@@ -60,7 +60,7 @@ public class FrontPredict {
         System.out.println("#### Initialize ####");
         FrontPredict p = new FrontPredict("Front_CNN_1.zip", img_file, slide_stride, decision_threshold);
         System.out.println("#### Predict Tiles ####");
-        p.predict();
+        p.predict_tile();
         System.out.println("#### Calculate Locations ####");
         p.cal_location();
 
@@ -106,7 +106,7 @@ public class FrontPredict {
     }
 
 
-    public void predict() throws IOException {
+    public void predict_tile() throws IOException {
         INDArray tiles = slide();
         MultiLayerNetwork model = ModelSerializer.restoreMultiLayerNetwork(model_f);
         output = Nd4j.zeros(tiles.shape()[0], tiles.shape()[1], labelNum);
@@ -153,7 +153,7 @@ public class FrontPredict {
 
     private void average_locs(HashMap<Integer, ArrayList<int[]>> m) {
         for (int label = 0; label < labelNum; label++) {
-            if (labelNum != 5) {
+            if (label != 5) {
                 if (m.containsKey(label)) {
                     ArrayList<int[]> locs = m.get(label);
                     int x_sum = 0;
