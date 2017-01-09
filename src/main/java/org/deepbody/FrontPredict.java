@@ -83,6 +83,8 @@ public class FrontPredict {
         this.predict_f = new File(System.getProperty("user.dir"),
                 "src/main/resources/Body/Prediction/Front/" + predict_file);
 
+        this.locations = new ArrayList<>();
+
         this.slide_stride = slide_stride;
         this.decision_threshold = decision_threshold;
 
@@ -120,7 +122,6 @@ public class FrontPredict {
     //location of a body part: calculate the average row/column of all the pixels
     //that are predicted as that body part
     public void cal_location() {
-        locations = new ArrayList<>();
         HashMap<Integer, ArrayList<int[]>> m = new HashMap<>();
         for (int r = 0; r < output.shape()[0]; r++) {
             for (int c = 0; c < output.shape()[1]; c++) {
@@ -148,6 +149,8 @@ public class FrontPredict {
                 }
             }
         }
+        output_label_pixels(m,0);
+        output_label_pixels(m,1);
         average_locs(m);
     }
 
@@ -172,6 +175,15 @@ public class FrontPredict {
                 int[] loc = {0, 0};
                 this.locations.add(loc);
             }
+        }
+    }
+
+    private void output_label_pixels(HashMap<Integer, ArrayList<int[]>> m, int label){
+        ArrayList<int []> locs = m.get(label);
+        System.out.println(predict_f.getPath() + ", label: " + label);
+        for (int i = 0; i < locs.size(); i++) {
+            int[] loc = locs.get(i);
+            System.out.println(loc[0]+","+loc[1]);
         }
     }
 
