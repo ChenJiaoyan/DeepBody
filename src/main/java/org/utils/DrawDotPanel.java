@@ -15,6 +15,7 @@ public class DrawDotPanel {
 
 
     //ths method will colour a pixel red
+    //make the point larger
     public static BufferedImage drawDot(BufferedImage img, ArrayList<int[]> locations) {
         for (int[] dot : locations) {
             int x = dot[0];
@@ -69,7 +70,7 @@ public class DrawDotPanel {
         BufferedReader br = new BufferedReader(reader);
         ArrayList<int[]> locations = new ArrayList<>();
         String line = br.readLine();
-        String img_name = "207034429.jpg";
+        String img_name = "207034429_cut.jpg";
         File predict_f = new File(System.getProperty("user.dir"),
                 "src/main/resources/Body/Prediction/Front/" + img_name);
 
