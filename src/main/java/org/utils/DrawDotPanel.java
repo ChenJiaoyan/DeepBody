@@ -11,51 +11,37 @@ import java.util.ArrayList;
  * Created by lisa on 1/2/17.
  */
 
-public class DrawDotPanel extends JPanel {
+public class DrawDotPanel {
 
-    private BufferedImage bimg;
-    private Dimension dims;
-
-    public DrawDotPanel(BufferedImage image) {
-        bimg = image;
-        dims = new Dimension(bimg.getWidth(), bimg.getHeight());
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(bimg, 0, 0, null);
-    }
-
-    //this method will allow the changing of image
-    public void setBufferedImage(BufferedImage newImg) {
-        bimg = newImg;
-    }
 
     //ths method will colour a pixel red
-    public boolean drawDot(int x, int y) {
-
-        if (x<=0 || y<=0 || y >= dims.getHeight() || x >= dims.getWidth()) {
-            return false;
+    public static BufferedImage drawDot(BufferedImage img, ArrayList<int[]> locations) {
+        for (int[] dot : locations) {
+            int x = dot[0];
+            int y = dot[1];
+            if (x > 0 && y > 0 && y < img.getHeight() && x < img.getWidth()) {
+                img.setRGB(x, y, 0xFFFF0000);
+                if (x-1 > 0 ) {
+                    img.setRGB(x-1, y, 0xFFFF0000);//red
+                }
+                if (y-1 > 0 ) {
+                    img.setRGB(x, y-1, 0xFFFF0000);//red
+                }
+                if (x+1 < img.getWidth() ) {
+                    img.setRGB(x+1, y, 0xFFFF0000);//red
+                }
+                if (y+1 < img.getHeight() ) {
+                    img.setRGB(x, y+1, 0xFFFF0000);//red
+                }
+                System.out.printf("point: (%d, %d)\n",x,y);
+            }
         }
-
-        bimg.setRGB(x, y,  0xFFFF0000);//red
-
-        repaint();
-        return true;
+        return img;
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return dims;
-    }
 
-    public static void showResult(File predict_f, ArrayList<int []> locations) {
-
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(true);
+    public static void showResult(File predict_f, ArrayList<int[]> locations) {
+        int rate = 2;
 
         BufferedImage image = null;
         try {
@@ -63,17 +49,15 @@ public class DrawDotPanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        DrawDotPanel panel = new DrawDotPanel(image);
-        frame.add(panel);
-
-        /**
-         *  dot[1] is the x position, dot[0] is the y position
-         */
-        for (int[] dot : locations) {
-            panel.drawDot(dot[1], dot[0]);
-        }
-
-        panel.repaint();
+        BufferedImage img = drawDot(image, locations);
+        Image dimg = img.getScaledInstance(img.getWidth() / rate, img.getHeight() / rate,
+                Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(dimg);
+        JLabel imageLabel = new JLabel(icon);
+        JFrame frame = new JFrame("Show Result");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(true);
+        frame.getContentPane().add(imageLabel);
         frame.pack();
         frame.setVisible(true);
     }
@@ -83,24 +67,24 @@ public class DrawDotPanel extends JPanel {
         File location_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + location_file);
         InputStreamReader reader = new InputStreamReader(new FileInputStream(location_f));
         BufferedReader br = new BufferedReader(reader);
-        ArrayList<int []> locations = new ArrayList<>();
+        ArrayList<int[]> locations = new ArrayList<>();
         String line = br.readLine();
         String img_name = "207034429.jpg";
         File predict_f = new File(System.getProperty("user.dir"),
                 "src/main/resources/Body/Prediction/Front/" + img_name);
 
-        while(line!=null){
-            if(line.startsWith(img_name)){
-                String [] tmp = line.split(";");
-                for(int i=1;i<tmp.length;i++){
-                    String [] tmp2 = tmp[i].split(",");
-                    int [] loc = {Integer.parseInt(tmp2[0]),Integer.parseInt(tmp2[1])};
+        while (line != null) {
+            if (line.startsWith(img_name)) {
+                String[] tmp = line.split(";");
+                for (int i = 1; i < tmp.length; i++) {
+                    String[] tmp2 = tmp[i].split(",");
+                    int[] loc = {Integer.parseInt(tmp2[0]), Integer.parseInt(tmp2[1])};
                     locations.add(loc);
                 }
             }
             line = br.readLine();
         }
-        showResult(predict_f,locations);
+        showResult(predict_f, locations);
     }
 
 }
