@@ -13,19 +13,21 @@ import javax.swing.*;
  * Created by john on 20.12.16.
  */
 public class SampleLabeling {
-    protected static String label = "OTHER";
+    protected static String label = "L_KNEE";
     protected static String img_f = "207034429.jpg"; //front: 207034429.jpg 290323911.jpg 1313883841.jpg
-    protected static int width = 960;
-    protected static int height = 1280;
+    protected static int img_width;
+    protected static int img_height;
     protected static int rate = 2;
 
     public static void main(String args[]) throws IOException {
         File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/front/" + img_f);
         BufferedImage image = ImageIO.read(f);
+        img_width = image.getWidth();
+        img_height = image.getHeight();
 
         //rescale the image to ensure the whole image is displayed
         //in sampling, do NOT enlarge the window
-        Image dimg = image.getScaledInstance(width / rate, height / rate, Image.SCALE_SMOOTH);
+        Image dimg = image.getScaledInstance(img_width / rate, img_height / rate, Image.SCALE_SMOOTH);
         ImageIcon icon = new ImageIcon(dimg);
         JLabel imageLabel = new JLabel(icon);
         imageLabel.addMouseListener(new MouseListener() {

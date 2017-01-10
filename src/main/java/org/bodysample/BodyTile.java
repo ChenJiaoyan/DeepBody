@@ -8,17 +8,24 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Iterator;
+import java.util.Properties;
 
 /**
  * Created by john on 19.12.16.
  */
 public class BodyTile {
-    protected static int height = 64;
-    protected static int width = 64;
+    protected static int tile_height;
+    protected static int tile_width;
     protected static String type = "Front";
     protected static String sample_f = type + "_Sample_1";
 
     public static void main(String args[]) throws IOException {
+        Properties properties = new Properties();
+        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties");
+        properties.load(inputStream);
+        tile_height = Integer.parseInt(properties.getProperty("tile_height"));
+        tile_width = Integer.parseInt(properties.getProperty("tile_width"));
+
         File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + sample_f);
         InputStreamReader reader = new InputStreamReader(new FileInputStream(f));
         BufferedReader br = new BufferedReader(reader);
@@ -42,7 +49,7 @@ public class BodyTile {
             File des_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Tiles_" + type + "_1/"
                     + label + "/" + des_fname);
             //if(!des_f.exists()) {
-                cut(src_f, des_f, x - width / 2, y - height / 2);
+                cut(src_f, des_f, x - tile_width / 2, y - tile_height / 2);
                 System.out.println(des_f);
                 num++;
             //}
@@ -61,7 +68,7 @@ public class BodyTile {
             iis = ImageIO.createImageInputStream(is);
             reader.setInput(iis, true);
             ImageReadParam param = reader.getDefaultReadParam();
-            Rectangle rect = new Rectangle(x, y, width, height);
+            Rectangle rect = new Rectangle(x, y, tile_width, tile_height);
             param.setSourceRegion(rect);
             BufferedImage bi = reader.read(0, param);
             ImageIO.write(bi, "jpg", des_f);
