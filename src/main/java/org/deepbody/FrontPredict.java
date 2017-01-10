@@ -138,9 +138,9 @@ public class FrontPredict {
                                 locs.add(loc);
                                 m.put(label, locs);
                             } else {
-                                ArrayList<int []> locs = m.get(label);
+                                ArrayList<int[]> locs = m.get(label);
                                 locs.add(loc);
-                                m.put(label,locs);
+                                m.put(label, locs);
                             }
                             break;
                         }
@@ -149,8 +149,8 @@ public class FrontPredict {
                 }
             }
         }
-        for(int label=0;label<labelNum;label++) {
-            if(label!=5) {
+        for (int label = 0; label < labelNum; label++) {
+            if (label != 5) {
                 output_label_pixels(m, label);
             }
         }
@@ -181,13 +181,17 @@ public class FrontPredict {
         }
     }
 
-    private void output_label_pixels(HashMap<Integer, ArrayList<int[]>> m, int label){
-        ArrayList<int []> locs = m.get(label);
+    private void output_label_pixels(HashMap<Integer, ArrayList<int[]>> m, int label) {
+        ArrayList<int[]> locs = m.get(label);
         System.out.println("label: " + label);
         String result = predict_f.getPath();
-        for (int i = 0; i < locs.size(); i++) {
-            int[] loc = locs.get(i);
-            result = result + ";" + loc[0] + "," + loc[1];
+        if (locs == null) {
+            result = result + ";" + "None";
+        } else {
+            for (int i = 0; i < locs.size(); i++) {
+                int[] loc = locs.get(i);
+                result = result + ";" + loc[0] + "," + loc[1];
+            }
         }
         System.out.println(result);
     }
