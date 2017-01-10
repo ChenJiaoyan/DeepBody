@@ -37,12 +37,6 @@ public class BodyTile {
             int x = Integer.parseInt(tmp[1]);
             int y = Integer.parseInt(tmp[2]);
             String label = tmp[3];
-            File src_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/" + type + "/" +
-                    src_fname);
-            BufferedImage image = ImageIO.read(src_f);
-            int img_width = image.getWidth();
-            int img_height = image.getHeight();
-
             File des_dir = new File(System.getProperty("user.dir"), "src/main/resources/Body/Tiles_" + type +
                     "_1/" + label);
             if (!des_dir.exists()) {
@@ -52,6 +46,11 @@ public class BodyTile {
             File des_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Tiles_" + type + "_1/"
                     + label + "/" + des_fname);
             if (!des_f.exists()) {
+                File src_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Image/" + type + "/" +
+                        src_fname);
+                BufferedImage image = ImageIO.read(src_f);
+                int img_width = image.getWidth();
+                int img_height = image.getHeight();
                 if (x - tile_width / 2 >= 0 && y - tile_height / 2 >= 0 &&
                         x + tile_width / 2 < img_width && y + tile_height / 2 < img_height) {
                     cut(src_f, des_f, x - tile_width / 2, y - tile_height / 2);

@@ -13,7 +13,7 @@ import javax.swing.*;
  * Created by john on 20.12.16.
  */
 public class SampleLabeling {
-    protected static String label = "OTHER";
+    protected static String label = "R_KNEE";
     protected static String img_f = "207034429.jpg"; //front: 207034429.jpg 290323911.jpg 1313883841.jpg
     protected static int img_width;
     protected static int img_height;
