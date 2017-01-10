@@ -40,7 +40,10 @@ public class BodyTile {
             String des_fname = src_fname.substring(0, src_fname.length() - 4) + "_" + x + "_" + y + ".jpg";
             File des_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Tiles_" + type + "_1/"
                     + label + "/" + des_fname);
-            cut(src_f, des_f, x - width / 2, y - height / 2);
+            if(!des_f.exists()) {
+                cut(src_f, des_f, x - width / 2, y - height / 2);
+                System.out.println(des_f);
+            }
             line = br.readLine();
         }
     }
