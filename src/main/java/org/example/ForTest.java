@@ -24,6 +24,7 @@ public class ForTest {
     protected static int batchSize = 1;
 
     public static void main(String args[]) throws IOException {
+        System.out.println(System.getProperty("user.dir") + "src/main/resources/Body/");
         int [] d = {1,2,3};
         double [] dd = Doubles.toArray(Ints.asList(d));
         System.out.println(Arrays.toString(dd));
