@@ -180,11 +180,13 @@ public class FrontPredict {
 
     private void output_label_pixels(HashMap<Integer, ArrayList<int[]>> m, int label){
         ArrayList<int []> locs = m.get(label);
-        System.out.println(predict_f.getPath() + ", label: " + label);
+        System.out.println("label: " + label);
+        String result = predict_f.getPath();
         for (int i = 0; i < locs.size(); i++) {
             int[] loc = locs.get(i);
-            System.out.println(loc[0]+","+loc[1]);
+            result = result + ";" + loc[0] + "," + loc[1];
         }
+        System.out.println(result);
     }
 
     private INDArray slide() throws IOException {
