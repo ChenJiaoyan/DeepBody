@@ -23,6 +23,7 @@ public class BodyTile {
         InputStreamReader reader = new InputStreamReader(new FileInputStream(f));
         BufferedReader br = new BufferedReader(reader);
         String line = br.readLine();
+        int num = 0;
         while (line != null) {
             String[] tmp = line.split(",");
             String src_fname = tmp[0];
@@ -43,9 +44,11 @@ public class BodyTile {
             if(!des_f.exists()) {
                 cut(src_f, des_f, x - width / 2, y - height / 2);
                 System.out.println(des_f);
+                num++;
             }
             line = br.readLine();
         }
+        System.out.println(num + " tiles added!");
     }
 
     public static void cut(File src_f, File des_f, int x, int y) throws IOException {
