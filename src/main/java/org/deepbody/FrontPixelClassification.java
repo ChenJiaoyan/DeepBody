@@ -117,6 +117,8 @@ public class FrontPixelClassification {
         scaler.fit(trainIter);
         trainIter.setPreProcessor(scaler);
 
+        System.out.println(trainIter.getLabels());
+
         System.out.println("**** Build Model ****");
         MultiLayerConfiguration conf = ANN_config();
         MultiLayerNetwork model = new MultiLayerNetwork(conf);
