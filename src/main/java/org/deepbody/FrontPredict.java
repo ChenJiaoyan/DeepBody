@@ -149,11 +149,7 @@ public class FrontPredict {
                 }
             }
         }
-        for (int label = 0; label < labelNum; label++) {
-            if (label != 5) {
-                output_label_pixels(m, label);
-            }
-        }
+        output_label_pixels(m);
         average_locs(m);
     }
 
@@ -181,19 +177,24 @@ public class FrontPredict {
         }
     }
 
-    private void output_label_pixels(HashMap<Integer, ArrayList<int[]>> m, int label) {
-        ArrayList<int[]> locs = m.get(label);
-        System.out.println("label: " + label);
-        String result = predict_f.getPath();
-        if (locs == null) {
-            result = result + ";" + "None";
-        } else {
-            for (int i = 0; i < locs.size(); i++) {
-                int[] loc = locs.get(i);
-                result = result + ";" + loc[0] + "," + loc[1];
+    private void output_label_pixels(HashMap<Integer, ArrayList<int[]>> m) {
+        Set<Integer> labels = m.keySet();
+        Iterator<Integer> it = labels.iterator();
+        while(it.hasNext()){
+            int label = it.next();
+            ArrayList<int[]> locs = m.get(label);
+            System.out.println("label: " + label);
+            String result = predict_f.getPath();
+            if(locs!=null) {
+                for (int i = 0; i < locs.size(); i++) {
+                    int[] loc = locs.get(i);
+                    result = result + ";" + loc[0] + "," + loc[1];
+                }
+            }else{
+                result = result + ";None";
             }
+            System.out.println(result);
         }
-        System.out.println(result);
     }
 
     private INDArray slide() throws IOException {
