@@ -48,11 +48,11 @@ public class BodyTile {
             String des_fname = src_fname.substring(0, src_fname.length() - 4) + "_" + x + "_" + y + ".jpg";
             File des_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/Tiles_" + type + "_1/"
                     + label + "/" + des_fname);
-            //if(!des_f.exists()) {
+            if(!des_f.exists()) {
                 cut(src_f, des_f, x - tile_width / 2, y - tile_height / 2);
                 System.out.println(des_f);
                 num++;
-            //}
+            }
             line = br.readLine();
         }
         System.out.println(num + " tiles added!");
