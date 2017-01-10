@@ -149,8 +149,11 @@ public class FrontPredict {
                 }
             }
         }
-        output_label_pixels(m,0);
-        output_label_pixels(m,1);
+        for(int label=0;label<labelNum;label++) {
+            if(label!=5) {
+                output_label_pixels(m, label);
+            }
+        }
         average_locs(m);
     }
 
