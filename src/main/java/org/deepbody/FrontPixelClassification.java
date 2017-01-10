@@ -100,7 +100,7 @@ public class FrontPixelClassification {
 
     public void learn() throws IOException {
         System.out.println("**** Load Data ****");
-        String filename = System.getProperty("user.dir") + "src/main/resources/Body/" + tiles_dir;
+        String filename = System.getProperty("user.dir") + "/src/main/resources/Body/" + tiles_dir;
         System.out.println(filename);
         File parentDir = new File(filename);
         FileSplit filesInDir = new FileSplit(parentDir, allowedExtensions, randNumGen);
