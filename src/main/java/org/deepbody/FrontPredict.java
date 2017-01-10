@@ -48,7 +48,7 @@ public class FrontPredict {
     private int slide_stride;
 
     INDArray output;
-    ArrayList<int[]> locations;
+    HashMap<Integer, int[]> locations;
 
     public static void main(String args[]) throws IOException {
         System.out.println("Parameters: " + Arrays.toString(args));
@@ -67,10 +67,13 @@ public class FrontPredict {
         p.cal_location();
 
         System.out.println("----------------------- Results ----------------------");
-        ArrayList<int[]> locations = p.getLocations();
+        HashMap<Integer, int[]> locations = p.getLocations();
+        Set<Integer> keys = locations.keySet();
+        Iterator<Integer> it = keys.iterator();
         String result = img_file;
-        for (int i = 0; i < locations.size(); i++) {
-            int[] location = locations.get(i);
+        while (it.hasNext()) {
+            int key = it.next();
+            int[] location = locations.get(key);
             int r = location[0];
             int c = location[1];
             result = result + ";" + r + "," + c;
@@ -85,7 +88,7 @@ public class FrontPredict {
         this.predict_f = new File(System.getProperty("user.dir"),
                 "src/main/resources/Body/Prediction/Front/" + predict_file);
 
-        this.locations = new ArrayList<>();
+        this.locations = new HashMap<>();
 
         this.slide_stride = slide_stride;
         this.decision_threshold = decision_threshold;
@@ -153,10 +156,11 @@ public class FrontPredict {
             }
         }
         output_label_pixels(m);
-        average_locs(m);
+        loc_decision_ANKLE(m, true);
+        loc_decision_ANKLE(m, false);
     }
 
-    private void average_locs(HashMap<Integer, ArrayList<int[]>> m) {
+    private void loc_decision_average(HashMap<Integer, ArrayList<int[]>> m) {
         for (int label = 0; label < labelNum; label++) {
             if (label != otherLabel) {
                 if (m.containsKey(label)) {
@@ -168,32 +172,102 @@ public class FrontPredict {
                         y_sum += locs.get(i)[1];
                     }
                     int[] loc = {x_sum / locs.size(), y_sum / locs.size()};
-                    this.locations.add(loc);
+                    this.locations.put(label, loc);
                 } else {
                     int[] loc = {-1, -1};
-                    this.locations.add(loc);
+                    this.locations.put(label, loc);
                 }
             } else {
                 int[] loc = {0, 0};
-                this.locations.add(loc);
+                this.locations.put(label, loc);
             }
         }
+    }
+
+    private void loc_decision_ANKLE(HashMap<Integer, ArrayList<int[]>> m, boolean isLeft) {
+        int circle_r = 25;
+        int ankleLabel = 0;
+        if (!isLeft) {
+            ankleLabel = 5;
+        }
+        ArrayList<int[]> locs = m.get(ankleLabel);
+        ArrayList<int[]> locs2 = height_filter(locs, img_height / 3, false);
+        int max_num = 0;
+        int[] max_loc = {-1, -1};
+        for (int i = 0; i < locs2.size(); i++) {
+            int[] loc = locs2.get(i);
+            int num = count_surrounding_locs(locs2, loc, circle_r);
+            if (num > max_num) {
+                max_num = num;
+                max_loc = loc;
+            }
+        }
+        int[] avg_loc = avg_surrounding_locs(locs2, max_loc, circle_r);
+        this.locations.put(ankleLabel, avg_loc);
+    }
+
+    private int count_surrounding_locs(ArrayList<int[]> locs, int[] loc, int a) {
+        int num = 1;
+        int x0 = loc[0];
+        int y0 = loc[1];
+        for (int i = 0; i < locs.size(); i++) {
+            int x = locs.get(i)[0];
+            int y = locs.get(i)[1];
+            if (x <= x0 + a && x >= x0 - a && y <= y0 + a && y >= y0 - a) {
+                num++;
+            }
+        }
+        return num;
+    }
+
+    private int[] avg_surrounding_locs(ArrayList<int[]> locs, int[] loc, int a) {
+        int[] avg_loc = {-1, -1};
+        int num = 0;
+        int x0 = loc[0];
+        int y0 = loc[1];
+        for (int i = 0; i < locs.size(); i++) {
+            int x = locs.get(i)[0];
+            int y = locs.get(i)[1];
+            if (x <= x0 + a && x >= x0 - a && y <= y0 + a && y >= y0 - a) {
+                num++;
+                avg_loc[0] += x;
+                avg_loc[1] += y;
+            }
+        }
+        avg_loc[0] = avg_loc[0] / num;
+        avg_loc[1] = avg_loc[1] / num;
+        return avg_loc;
+    }
+
+    private ArrayList<int[]> height_filter(ArrayList<int[]> locs, int threshold_line, boolean upper) {
+        ArrayList<int[]> new_locs = new ArrayList<>();
+        for (int i = 0; i < locs.size(); i++) {
+            int[] loc = locs.get(i);
+            int y = loc[1];
+            if (upper && y <= threshold_line) {
+                new_locs.add(loc);
+            }
+            if (!upper && y > threshold_line) {
+                new_locs.add(loc);
+            }
+        }
+        return new_locs;
     }
 
     private void output_label_pixels(HashMap<Integer, ArrayList<int[]>> m) {
         Set<Integer> labels = m.keySet();
         Iterator<Integer> it = labels.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             int label = it.next();
             ArrayList<int[]> locs = m.get(label);
             System.out.println("label: " + label);
             String result = predict_f.getPath();
-            if(locs!=null) {
+            if (locs != null) {
                 for (int i = 0; i < locs.size(); i++) {
                     int[] loc = locs.get(i);
                     result = result + ";" + loc[0] + "," + loc[1];
                 }
-            }else{
+            } else {
                 result = result + ";None";
             }
             System.out.println(result);
@@ -232,7 +306,7 @@ public class FrontPredict {
     }
 
 
-    public ArrayList<int[]> getLocations() {
+    public HashMap<Integer, int[]> getLocations() {
         return this.locations;
     }
 
