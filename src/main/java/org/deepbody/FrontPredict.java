@@ -16,6 +16,7 @@ import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.indexing.NDArrayIndex;
+import play.mvc.WebSocket;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -40,6 +41,7 @@ public class FrontPredict {
     private int img_width;
     private int channels;
     private int labelNum;
+    private int otherLabel;
 
     private double decision_threshold;
 
@@ -104,6 +106,7 @@ public class FrontPredict {
         this.tile_width = Integer.parseInt(properties.getProperty("tile_width"));
         this.labelNum = Integer.parseInt(properties.getProperty("labelNum"));
         this.channels = Integer.parseInt(properties.getProperty("channels"));
+        this.otherLabel = Integer.parseInt(properties.getProperty("otherLabel"));
 
     }
 
@@ -126,7 +129,7 @@ public class FrontPredict {
         for (int r = 0; r < output.shape()[0]; r++) {
             for (int c = 0; c < output.shape()[1]; c++) {
                 for (int label = 0; label < labelNum; label++) {
-                    if (label == 5) {
+                    if (label == otherLabel) {
                         continue;
                     } else {
                         if (output.getDouble(r, c, label) >= decision_threshold) {
@@ -155,7 +158,7 @@ public class FrontPredict {
 
     private void average_locs(HashMap<Integer, ArrayList<int[]>> m) {
         for (int label = 0; label < labelNum; label++) {
-            if (label != 5) {
+            if (label != otherLabel) {
                 if (m.containsKey(label)) {
                     ArrayList<int[]> locs = m.get(label);
                     int x_sum = 0;
