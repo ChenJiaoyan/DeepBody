@@ -238,9 +238,9 @@ public class FrontPredict {
             locs = height_filter(locs, 2*img_height / 3, true);
         }else {
             if (isLeft) {
-                label = 0;
+                label = 2;
             } else {
-                label = 5;
+                label = 7;
             }
             locs = m.get(label);
             locs = height_filter(locs, img_height / 2, true);
