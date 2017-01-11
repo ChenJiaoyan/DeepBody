@@ -157,6 +157,8 @@ public class FrontPredict {
         output_label_pixels(m);
         loc_decision_ANKLE_KNEE(m, true,"ANKLE");
         loc_decision_ANKLE_KNEE(m, false,"ANKLE");
+        loc_decision_ANKLE_KNEE(m, true,"KNEE");
+        loc_decision_ANKLE_KNEE(m, false,"KNEE");
         loc_decision_EYE_SHOULDER(m,true,"EYE");
         loc_decision_EYE_SHOULDER(m,false,"EYE");
         loc_decision_EYE_SHOULDER(m,true,"SHOULDER");
