@@ -68,15 +68,14 @@ public class FrontPredict {
 
         System.out.println("----------------------- Results ----------------------");
         HashMap<Integer, int[]> locations = p.getLocations();
-        Set<Integer> keys = locations.keySet();
-        Iterator<Integer> it = keys.iterator();
         String result = img_file;
-        while (it.hasNext()) {
-            int key = it.next();
-            int[] location = locations.get(key);
-            int r = location[0];
-            int c = location[1];
-            result = result + ";" + r + "," + c;
+        for(int label=0;label<p.getLabelNum();label++){
+            if(label!=p.getOtherLabel() && locations.containsKey(label)){
+                int[] location = locations.get(label);
+                int r = location[0];
+                int c = location[1];
+                result = result + ";" + r + "," + c;
+            }
         }
         System.out.println(result);
         System.out.println("----------------------- Results ----------------------");
@@ -156,8 +155,12 @@ public class FrontPredict {
             }
         }
         output_label_pixels(m);
-        loc_decision_ANKLE(m, true);
-        loc_decision_ANKLE(m, false);
+        loc_decision_ANKLE_KNEE(m, true,"ANKLE");
+        loc_decision_ANKLE_KNEE(m, false,"ANKLE");
+        loc_decision_EYE_SHOULDER(m,true,"EYE");
+        loc_decision_EYE_SHOULDER(m,false,"EYE");
+        loc_decision_EYE_SHOULDER(m,true,"SHOULDER");
+        loc_decision_EYE_SHOULDER(m,false,"SHOULDER");
     }
 
     private void loc_decision_average(HashMap<Integer, ArrayList<int[]>> m) {
@@ -184,26 +187,74 @@ public class FrontPredict {
         }
     }
 
-    private void loc_decision_ANKLE(HashMap<Integer, ArrayList<int[]>> m, boolean isLeft) {
-        int circle_r = 25;
-        int ankleLabel = 0;
-        if (!isLeft) {
-            ankleLabel = 5;
+    private void loc_decision_EYE_SHOULDER(HashMap<Integer, ArrayList<int[]>> m, boolean isLeft, String type) {
+        int circle_r = 30;
+        int label = 1;
+        ArrayList<int []> locs;
+        if(type.equals("EYE")){
+            if (isLeft) {
+                label = 1;
+            }else{
+                label = 6;
+            }
+            locs = m.get(label);
+            locs = height_filter(locs, img_height / 3, false);
+        }else{
+            if (isLeft) {
+                label = 3;
+            }else{
+                label = 8;
+            }
+            locs = m.get(label);
+            locs = height_filter(locs, img_height / 2, false);
         }
-        ArrayList<int[]> locs = m.get(ankleLabel);
-        ArrayList<int[]> locs2 = height_filter(locs, img_height / 3, false);
         int max_num = 0;
         int[] max_loc = {-1, -1};
-        for (int i = 0; i < locs2.size(); i++) {
-            int[] loc = locs2.get(i);
-            int num = count_surrounding_locs(locs2, loc, circle_r);
+        for (int i = 0; i < locs.size(); i++) {
+            int[] loc = locs.get(i);
+            int num = count_surrounding_locs(locs, loc, circle_r);
             if (num > max_num) {
                 max_num = num;
                 max_loc = loc;
             }
         }
-        int[] avg_loc = avg_surrounding_locs(locs2, max_loc, circle_r);
-        this.locations.put(ankleLabel, avg_loc);
+        int[] avg_loc = avg_surrounding_locs(locs, max_loc, circle_r);
+        this.locations.put(label, avg_loc);
+    }
+
+    private void loc_decision_ANKLE_KNEE(HashMap<Integer, ArrayList<int[]>> m, boolean isLeft, String type) {
+        int circle_r = 25;
+        int label = 0;
+        ArrayList<int []> locs;
+        if(type.equals("ANKLE")) {
+            if (isLeft) {
+                label = 0;
+            }else{
+                label = 5;
+            }
+            locs = m.get(label);
+            locs = height_filter(locs, 2*img_height / 3, true);
+        }else {
+            if (isLeft) {
+                label = 0;
+            } else {
+                label = 5;
+            }
+            locs = m.get(label);
+            locs = height_filter(locs, img_height / 2, true);
+        }
+        int max_num = 0;
+        int[] max_loc = {-1, -1};
+        for (int i = 0; i < locs.size(); i++) {
+            int[] loc = locs.get(i);
+            int num = count_surrounding_locs(locs, loc, circle_r);
+            if (num > max_num) {
+                max_num = num;
+                max_loc = loc;
+            }
+        }
+        int[] avg_loc = avg_surrounding_locs(locs, max_loc, circle_r);
+        this.locations.put(label, avg_loc);
     }
 
     private int count_surrounding_locs(ArrayList<int[]> locs, int[] loc, int a) {
@@ -239,15 +290,15 @@ public class FrontPredict {
         return avg_loc;
     }
 
-    private ArrayList<int[]> height_filter(ArrayList<int[]> locs, int threshold_line, boolean upper) {
+    private ArrayList<int[]> height_filter(ArrayList<int[]> locs, int threshold_line, boolean filter_upper) {
         ArrayList<int[]> new_locs = new ArrayList<>();
         for (int i = 0; i < locs.size(); i++) {
             int[] loc = locs.get(i);
             int y = loc[1];
-            if (upper && y <= threshold_line) {
+            if (filter_upper && y > threshold_line) {
                 new_locs.add(loc);
             }
-            if (!upper && y > threshold_line) {
+            if (!filter_upper && y <= threshold_line) {
                 new_locs.add(loc);
             }
         }
@@ -309,6 +360,7 @@ public class FrontPredict {
     public HashMap<Integer, int[]> getLocations() {
         return this.locations;
     }
-
+    public int getLabelNum(){return this.labelNum;}
+    public int getOtherLabel(){return this.otherLabel;}
 
 }
