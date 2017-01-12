@@ -359,6 +359,9 @@ public class FrontPredict {
 
         //DataNormalization normalizer = new NormalizerStandardize();
         DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
+        if(!normalizer_file.exists()){
+           System.out.println(normalizer_file.getPath() + " does not exists");
+        }
         normalizer.load(normalizer_file);
         it.setPreProcessor(normalizer);
         DataSet ds = it.next();
