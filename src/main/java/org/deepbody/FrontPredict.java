@@ -292,10 +292,10 @@ public class FrontPredict {
     }
 
     private int[] avg_surrounding_locs(ArrayList<int[]> locs, int[] loc, int a) {
-        int[] avg_loc = {-1, -1};
-        int num = 0;
         int x0 = loc[0];
         int y0 = loc[1];
+        int[] avg_loc = {x0, y0};
+        int num = 1;
         for (int i = 0; i < locs.size(); i++) {
             int x = locs.get(i)[0];
             int y = locs.get(i)[1];
