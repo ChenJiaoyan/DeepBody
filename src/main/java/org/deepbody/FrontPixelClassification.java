@@ -25,6 +25,7 @@ import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
+import org.nd4j.linalg.dataset.api.preprocessor.NormalizerStandardize;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 import java.io.File;
@@ -114,9 +115,13 @@ public class FrontPixelClassification {
         recordReader.initialize(trainData);
         DataSetIterator trainIter = new RecordReaderDataSetIterator(recordReader, batchSize, 1, labelNum);
 
-        DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
-        scaler.fit(trainIter);
-        trainIter.setPreProcessor(scaler);
+        DataNormalization normalizer = new NormalizerStandardize();
+        normalizer.fit(trainIter);
+        trainIter.setPreProcessor(normalizer);
+
+//        DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
+//        scaler.fit(trainIter);
+ //       trainIter.setPreProcessor(scaler);
 
         System.out.println(trainIter.getLabels());
 
@@ -134,8 +139,7 @@ public class FrontPixelClassification {
         recordReader.reset();
         recordReader.initialize(testData);
         DataSetIterator testIter = new RecordReaderDataSetIterator(recordReader, batchSize, 1, labelNum);
-        scaler.fit(testIter);
-        testIter.setPreProcessor(scaler);
+        testIter.setPreProcessor(normalizer);
         Evaluation eval = new Evaluation(labelNum);
         while (testIter.hasNext()) {
             DataSet next = testIter.next();

@@ -37,6 +37,7 @@ public class BodyTile {
             int x = Integer.parseInt(tmp[1]);
             int y = Integer.parseInt(tmp[2]);
             String label = tmp[3];
+
             File des_dir = new File(System.getProperty("user.dir"), "src/main/resources/Body/Tiles_" + type +
                     "_1/" + label);
             if (!des_dir.exists()) {
