@@ -51,6 +51,7 @@ public class FrontPixelClassification {
     private int batchSize;
     private int iterations;
     private String model_f;
+    private String normalizer_f;
     private String tiles_dir;
     private String ann_type;
 
@@ -71,8 +72,6 @@ public class FrontPixelClassification {
     }
 
     public FrontPixelClassification(String ann_type,int numEpochs,int batchSize) throws IOException {
-        model_f = "Front_CNN_1.zip";
-        tiles_dir = "Tiles_Front_1";
 
 
         this.ann_type = ann_type;
@@ -92,6 +91,9 @@ public class FrontPixelClassification {
         tile_width = Integer.parseInt(properties.getProperty("tile_width"));
         labelNum = Integer.parseInt(properties.getProperty("labelNum"));
         channels = Integer.parseInt(properties.getProperty("channels"));
+        model_f = properties.getProperty("model_f");
+        normalizer_f = properties.getProperty("normalizer_f");
+        tiles_dir = properties.getProperty("tiles_dir");
 
         seed = 12345;
         allowedExtensions = BaseImageLoader.ALLOWED_FORMATS;
@@ -115,13 +117,13 @@ public class FrontPixelClassification {
         recordReader.initialize(trainData);
         DataSetIterator trainIter = new RecordReaderDataSetIterator(recordReader, batchSize, 1, labelNum);
 
-        DataNormalization normalizer = new NormalizerStandardize();
-        normalizer.fit(trainIter);
-        trainIter.setPreProcessor(normalizer);
+//        DataNormalization normalizer = new NormalizerStandardize();
+ //       normalizer.fit(trainIter);
+  //      trainIter.setPreProcessor(normalizer);
 
-//        DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
-//        scaler.fit(trainIter);
- //       trainIter.setPreProcessor(scaler);
+        DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
+        normalizer.fit(trainIter);
+       trainIter.setPreProcessor(normalizer);
 
         System.out.println(trainIter.getLabels());
 
@@ -150,6 +152,7 @@ public class FrontPixelClassification {
 
         System.out.println("**** Save Model ****");
         storeModel(model);
+        storeNormalizer(normalizer);
     }
 
     private MultiLayerConfiguration ANN_config() {
@@ -259,6 +262,14 @@ public class FrontPixelClassification {
         File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + model_f);
         boolean saveUpdater = true;
         ModelSerializer.writeModel(net, f, saveUpdater);
+    }
+
+    private void storeNormalizer(DataNormalization normalizer) throws IOException {
+        File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f);
+        if(f.exists()){
+            f.delete();
+        }
+        normalizer.save(f);
     }
 
     private ConvolutionLayer convInit(String name, int in, int out, int[] kernel, int[] stride, int[] pad, double bias) {

@@ -14,10 +14,8 @@ import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
-import org.nd4j.linalg.dataset.api.preprocessor.NormalizerStandardize;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.indexing.NDArrayIndex;
-import play.mvc.WebSocket;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -31,8 +29,9 @@ import java.util.*;
  */
 
 public class FrontPredict {
-    private File model_f;
-    private File predict_f;
+    private File model_file;
+    private File predict_file;
+    private File normalizer_file;
 
     private final String[] allowedExtensions;
     private Random randNumGen;
@@ -61,7 +60,7 @@ public class FrontPredict {
         double decision_threshold = Double.parseDouble(args[2]);
 
         System.out.println("#### Initialize ####");
-        FrontPredict p = new FrontPredict("Front_CNN_1.zip", img_file, slide_stride, decision_threshold);
+        FrontPredict p = new FrontPredict(img_file, slide_stride, decision_threshold);
         System.out.println("#### Predict Tiles ####");
         p.predict_tile();
         System.out.println("#### Calculate Locations ####");
@@ -82,11 +81,7 @@ public class FrontPredict {
         System.out.println("----------------------- Results ----------------------");
     }
 
-    public FrontPredict(String model_file, String predict_file,
-                        int slide_stride, double decision_threshold) throws IOException {
-        this.model_f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + model_file);
-        this.predict_f = new File(System.getProperty("user.dir"),
-                "src/main/resources/Body/Prediction/Front/" + predict_file);
+    public FrontPredict(String predict_file, int slide_stride, double decision_threshold) throws IOException {
 
         this.locations = new HashMap<>();
 
@@ -98,7 +93,7 @@ public class FrontPredict {
         this.randNumGen = new Random(seed);
 
 
-        BufferedImage image = ImageIO.read(this.predict_f);
+        BufferedImage image = ImageIO.read(this.predict_file);
         this.img_height = image.getHeight();
         this.img_width = image.getWidth();
 
@@ -111,12 +106,19 @@ public class FrontPredict {
         this.channels = Integer.parseInt(properties.getProperty("channels"));
         this.otherLabel = Integer.parseInt(properties.getProperty("otherLabel"));
 
+        String model_f = properties.getProperty("model_f");
+        String normalizer_f = properties.getProperty("normalizer_f");
+        this.model_file = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + model_f);
+        this.normalizer_file = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f);
+        this.predict_file = new File(System.getProperty("user.dir"),
+                "src/main/resources/Body/Prediction/Front/" + predict_file);
+
     }
 
 
     public void predict_tile() throws IOException {
         INDArray tiles = slide();
-        MultiLayerNetwork model = ModelSerializer.restoreMultiLayerNetwork(model_f);
+        MultiLayerNetwork model = ModelSerializer.restoreMultiLayerNetwork(model_file);
         output = Nd4j.zeros(tiles.shape()[0], tiles.shape()[1], labelNum);
         for (int r = 0; r < tiles.shape()[0]; r++) {
             INDArray tiles_r = tiles.getRow(r);
@@ -200,16 +202,24 @@ public class FrontPredict {
             }else{
                 label = 6;
             }
-            locs = m.get(label);
-            locs = height_filter(locs, img_height / 3, false);
+            if(m.containsKey(label)) {
+                locs = m.get(label);
+                locs = height_filter(locs, img_height / 3, false);
+            }else{
+                return;
+            }
         }else{
             if (isLeft) {
                 label = 3;
             }else{
                 label = 8;
             }
-            locs = m.get(label);
-            locs = height_filter(locs, img_height / 2, false);
+            if(m.containsKey(label)) {
+                locs = m.get(label);
+                locs = height_filter(locs, img_height / 2, false);
+            }else{
+                return;
+            }
         }
         int max_num = 0;
         int[] max_loc = {-1, -1};
@@ -315,7 +325,7 @@ public class FrontPredict {
             int label = it.next();
             ArrayList<int[]> locs = m.get(label);
             System.out.println("label: " + label);
-            String result = predict_f.getPath();
+            String result = predict_file.getPath();
             if (locs != null) {
                 for (int i = 0; i < locs.size(); i++) {
                     int[] loc = locs.get(i);
@@ -330,7 +340,7 @@ public class FrontPredict {
 
     private INDArray slide() throws IOException {
 
-        FileSplit filesInDir = new FileSplit(predict_f, allowedExtensions, randNumGen);
+        FileSplit filesInDir = new FileSplit(predict_file, allowedExtensions, randNumGen);
         ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
         BalancedPathFilter pathFilter = new BalancedPathFilter(randNumGen, allowedExtensions, labelMaker);
         InputSplit[] filesInDirSplit = filesInDir.sample(pathFilter);
@@ -340,8 +350,9 @@ public class FrontPredict {
         recordReader.initialize(is);
         DataSetIterator it = new RecordReaderDataSetIterator(recordReader, 1, 1, labelNum);
 
-        DataNormalization normalizer = new NormalizerStandardize();
-        normalizer.fit(it);
+        //DataNormalization normalizer = new NormalizerStandardize();
+        DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
+        normalizer.load(normalizer_file);
         it.setPreProcessor(normalizer);
         DataSet ds = it.next();
 
