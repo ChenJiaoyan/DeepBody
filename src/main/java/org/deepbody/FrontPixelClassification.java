@@ -122,8 +122,8 @@ public class FrontPixelClassification {
         //      trainIter.setPreProcessor(normalizer);
 
         //DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
-        DataNormalization normalizer = new NormalizerMinMaxScaler();
-        //DataNormalization normalizer = new NormalizerStandardize();
+        //DataNormalization normalizer = new NormalizerMinMaxScaler();
+        DataNormalization normalizer = new NormalizerStandardize();
         normalizer.fit(trainIter);
         trainIter.setPreProcessor(normalizer);
 
