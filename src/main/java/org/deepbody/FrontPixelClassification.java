@@ -25,6 +25,7 @@ import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
 import org.nd4j.linalg.dataset.api.preprocessor.NormalizerMinMaxScaler;
+import org.nd4j.linalg.dataset.api.preprocessor.NormalizerStandardize;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 import java.io.File;
@@ -122,6 +123,7 @@ public class FrontPixelClassification {
 
         //DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
         DataNormalization normalizer = new NormalizerMinMaxScaler();
+        //DataNormalization normalizer = new NormalizerStandardize();
         normalizer.fit(trainIter);
         trainIter.setPreProcessor(normalizer);
 

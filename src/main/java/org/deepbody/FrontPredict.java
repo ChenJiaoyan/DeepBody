@@ -14,6 +14,7 @@ import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
+import org.nd4j.linalg.dataset.api.preprocessor.NormalizerMinMaxScaler;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.indexing.NDArrayIndex;
 
@@ -365,7 +366,8 @@ public class FrontPredict {
 
         //DataNormalization normalizer = new NormalizerStandardize();
         //DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
-        DataNormalization normalizer = new ImagePreProcessingScaler();
+        DataNormalization normalizer = new NormalizerMinMaxScaler();
+        //DataNormalization normalizer = new NormalizerStandardize();
         normalizer.load(normalizer_file0,normalizer_file1,normalizer_file2,normalizer_file3);
         it.setPreProcessor(normalizer);
         DataSet ds = it.next();
