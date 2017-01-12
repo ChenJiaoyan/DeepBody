@@ -65,11 +65,11 @@ public class FrontPixelClassification {
         //int numEpochs = 10;
         int batchSize = Integer.parseInt(args[2]);
         //int batchSize = 45;
-        FrontPixelClassification classification = new FrontPixelClassification(ann_type,numEpochs,batchSize);
+        FrontPixelClassification classification = new FrontPixelClassification(ann_type, numEpochs, batchSize);
         classification.learn();
     }
 
-    public FrontPixelClassification(String ann_type,int numEpochs,int batchSize) throws IOException {
+    public FrontPixelClassification(String ann_type, int numEpochs, int batchSize) throws IOException {
 
 
         this.ann_type = ann_type;
@@ -116,12 +116,12 @@ public class FrontPixelClassification {
         DataSetIterator trainIter = new RecordReaderDataSetIterator(recordReader, batchSize, 1, labelNum);
 
 //        DataNormalization normalizer = new NormalizerStandardize();
- //       normalizer.fit(trainIter);
-  //      trainIter.setPreProcessor(normalizer);
+        //       normalizer.fit(trainIter);
+        //      trainIter.setPreProcessor(normalizer);
 
         DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
         normalizer.fit(trainIter);
-       trainIter.setPreProcessor(normalizer);
+        trainIter.setPreProcessor(normalizer);
 
         System.out.println(trainIter.getLabels());
 
@@ -143,6 +143,7 @@ public class FrontPixelClassification {
         Evaluation eval = new Evaluation(labelNum);
         while (testIter.hasNext()) {
             DataSet next = testIter.next();
+            System.out.println(next);
             INDArray output = model.output(next.getFeatureMatrix());
             eval.eval(next.getLabels(), output);
         }
@@ -264,7 +265,7 @@ public class FrontPixelClassification {
 
     private void storeNormalizer(DataNormalization normalizer) throws IOException {
         File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f);
-        if(f.exists()){
+        if (f.exists()) {
             f.delete();
         }
         System.out.println(f.getPath());

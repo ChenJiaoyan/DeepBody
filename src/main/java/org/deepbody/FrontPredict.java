@@ -69,8 +69,8 @@ public class FrontPredict {
         System.out.println("----------------------- Results ----------------------");
         HashMap<Integer, int[]> locations = p.getLocations();
         String result = img_file;
-        for(int label=0;label<p.getLabelNum();label++){
-            if(label!=p.getOtherLabel() && locations.containsKey(label)){
+        for (int label = 0; label < p.getLabelNum(); label++) {
+            if (label != p.getOtherLabel() && locations.containsKey(label)) {
                 int[] location = locations.get(label);
                 int r = location[0];
                 int c = location[1];
@@ -157,14 +157,14 @@ public class FrontPredict {
             }
         }
         output_label_pixels(m);
-        loc_decision_ANKLE_KNEE(m, true,"ANKLE");
-        loc_decision_ANKLE_KNEE(m, false,"ANKLE");
-        loc_decision_ANKLE_KNEE(m, true,"KNEE");
-        loc_decision_ANKLE_KNEE(m, false,"KNEE");
-        loc_decision_EYE_SHOULDER(m,true,"EYE");
-        loc_decision_EYE_SHOULDER(m,false,"EYE");
-        loc_decision_EYE_SHOULDER(m,true,"SHOULDER");
-        loc_decision_EYE_SHOULDER(m,false,"SHOULDER");
+        loc_decision_ANKLE_KNEE(m, true, "ANKLE");
+        loc_decision_ANKLE_KNEE(m, false, "ANKLE");
+        loc_decision_ANKLE_KNEE(m, true, "KNEE");
+        loc_decision_ANKLE_KNEE(m, false, "KNEE");
+        loc_decision_EYE_SHOULDER(m, true, "EYE");
+        loc_decision_EYE_SHOULDER(m, false, "EYE");
+        loc_decision_EYE_SHOULDER(m, true, "SHOULDER");
+        loc_decision_EYE_SHOULDER(m, false, "SHOULDER");
     }
 
     private void loc_decision_average(HashMap<Integer, ArrayList<int[]>> m) {
@@ -194,29 +194,29 @@ public class FrontPredict {
     private void loc_decision_EYE_SHOULDER(HashMap<Integer, ArrayList<int[]>> m, boolean isLeft, String type) {
         int circle_r = 30;
         int label = 1;
-        ArrayList<int []> locs;
-        if(type.equals("EYE")){
+        ArrayList<int[]> locs;
+        if (type.equals("EYE")) {
             if (isLeft) {
                 label = 1;
-            }else{
+            } else {
                 label = 6;
             }
-            if(m.containsKey(label)) {
+            if (m.containsKey(label)) {
                 locs = m.get(label);
                 locs = height_filter(locs, img_height / 3, false);
-            }else{
+            } else {
                 return;
             }
-        }else{
+        } else {
             if (isLeft) {
                 label = 3;
-            }else{
+            } else {
                 label = 8;
             }
-            if(m.containsKey(label)) {
+            if (m.containsKey(label)) {
                 locs = m.get(label);
                 locs = height_filter(locs, img_height / 2, false);
-            }else{
+            } else {
                 return;
             }
         }
@@ -237,29 +237,29 @@ public class FrontPredict {
     private void loc_decision_ANKLE_KNEE(HashMap<Integer, ArrayList<int[]>> m, boolean isLeft, String type) {
         int circle_r = 25;
         int label = 0;
-        ArrayList<int []> locs;
-        if(type.equals("ANKLE")) {
+        ArrayList<int[]> locs;
+        if (type.equals("ANKLE")) {
             if (isLeft) {
                 label = 0;
-            }else{
+            } else {
                 label = 5;
             }
-            if(m.containsKey(label)) {
+            if (m.containsKey(label)) {
                 locs = m.get(label);
                 locs = height_filter(locs, 2 * img_height / 3, true);
-            }else{
+            } else {
                 return;
             }
-        }else {
+        } else {
             if (isLeft) {
                 label = 2;
             } else {
                 label = 7;
             }
-            if(m.containsKey(label)) {
+            if (m.containsKey(label)) {
                 locs = m.get(label);
                 locs = height_filter(locs, img_height / 2, true);
-            }else{
+            } else {
                 return;
             }
         }
@@ -359,8 +359,9 @@ public class FrontPredict {
 
         //DataNormalization normalizer = new NormalizerStandardize();
         DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
-        if(!normalizer_file.exists()){
-           System.out.println(normalizer_file.getPath() + " does not exists");
+        if (!normalizer_file.exists()) {
+            System.out.println(normalizer_file.getPath() + " does not exists");
+            System.exit(0);
         }
         normalizer.load(normalizer_file);
         it.setPreProcessor(normalizer);
@@ -384,7 +385,13 @@ public class FrontPredict {
     public HashMap<Integer, int[]> getLocations() {
         return this.locations;
     }
-    public int getLabelNum(){return this.labelNum;}
-    public int getOtherLabel(){return this.otherLabel;}
+
+    public int getLabelNum() {
+        return this.labelNum;
+    }
+
+    public int getOtherLabel() {
+        return this.otherLabel;
+    }
 
 }
