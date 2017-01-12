@@ -82,11 +82,12 @@ public class FrontPredict {
     }
 
     public FrontPredict(String predict_file, int slide_stride, double decision_threshold) throws IOException {
-
         this.locations = new HashMap<>();
 
         this.slide_stride = slide_stride;
         this.decision_threshold = decision_threshold;
+        this.predict_file = new File(System.getProperty("user.dir"),
+                "src/main/resources/Body/Prediction/Front/" + predict_file);
 
         long seed = 12345;
         this.allowedExtensions = BaseImageLoader.ALLOWED_FORMATS;
@@ -110,8 +111,6 @@ public class FrontPredict {
         String normalizer_f = properties.getProperty("normalizer_f");
         this.model_file = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + model_f);
         this.normalizer_file = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f);
-        this.predict_file = new File(System.getProperty("user.dir"),
-                "src/main/resources/Body/Prediction/Front/" + predict_file);
 
     }
 
