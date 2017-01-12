@@ -14,6 +14,7 @@ import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
+import org.nd4j.linalg.dataset.api.preprocessor.NormalizerStandardize;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.indexing.NDArrayIndex;
 import play.mvc.WebSocket;
@@ -339,9 +340,9 @@ public class FrontPredict {
         recordReader.initialize(is);
         DataSetIterator it = new RecordReaderDataSetIterator(recordReader, 1, 1, labelNum);
 
-        DataNormalization scaler = new ImagePreProcessingScaler(0, 1);
-        scaler.fit(it);
-        it.setPreProcessor(scaler);
+        DataNormalization normalizer = new NormalizerStandardize();
+        normalizer.fit(it);
+        it.setPreProcessor(normalizer);
         DataSet ds = it.next();
 
         int row_n = (int) Math.ceil((img_height - tile_height) / (double) slide_stride);
