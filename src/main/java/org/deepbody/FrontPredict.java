@@ -31,7 +31,10 @@ import java.util.*;
 public class FrontPredict {
     private File model_file;
     private File predict_file;
-    private File normalizer_file;
+    private File normalizer_file0;
+    private File normalizer_file1;
+    private File normalizer_file2;
+    private File normalizer_file3;
 
     private final String[] allowedExtensions;
     private Random randNumGen;
@@ -110,7 +113,10 @@ public class FrontPredict {
         String model_f = properties.getProperty("model_f");
         String normalizer_f = properties.getProperty("normalizer_f");
         this.model_file = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + model_f);
-        this.normalizer_file = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f);
+        this.normalizer_file0 = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f+"0");
+        this.normalizer_file1 = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f+"1");
+        this.normalizer_file2 = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f+"2");
+        this.normalizer_file3 = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f+"3");
 
     }
 
@@ -358,12 +364,9 @@ public class FrontPredict {
         DataSetIterator it = new RecordReaderDataSetIterator(recordReader, 1, 1, labelNum);
 
         //DataNormalization normalizer = new NormalizerStandardize();
-        DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
-        if (!normalizer_file.exists()) {
-            System.out.println(normalizer_file.getPath() + " does not exists");
-            System.exit(0);
-        }
-        normalizer.load(normalizer_file);
+        //DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
+        DataNormalization normalizer = new ImagePreProcessingScaler();
+        normalizer.load(normalizer_file0,normalizer_file1,normalizer_file2,normalizer_file3);
         it.setPreProcessor(normalizer);
         DataSet ds = it.next();
 

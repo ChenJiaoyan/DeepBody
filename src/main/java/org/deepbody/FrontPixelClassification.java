@@ -265,13 +265,11 @@ public class FrontPixelClassification {
     }
 
     private void storeNormalizer(DataNormalization normalizer) throws IOException {
-        File f = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f);
-        if (f.exists()) {
-            f.delete();
-        }
-        System.out.println(f.getPath());
-        normalizer.save(f);
-
+        File f0 = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f + "0");
+        File f1 = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f + "1");
+        File f2 = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f + "2");
+        File f3 = new File(System.getProperty("user.dir"), "src/main/resources/Body/" + normalizer_f + "3");
+        normalizer.save(f0, f1, f2, f3);
     }
 
     private ConvolutionLayer convInit(String name, int in, int out, int[] kernel, int[] stride, int[] pad, double bias) {
