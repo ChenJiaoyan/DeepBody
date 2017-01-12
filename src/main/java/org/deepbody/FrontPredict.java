@@ -244,16 +244,24 @@ public class FrontPredict {
             }else{
                 label = 5;
             }
-            locs = m.get(label);
-            locs = height_filter(locs, 2*img_height / 3, true);
+            if(m.containsKey(label)) {
+                locs = m.get(label);
+                locs = height_filter(locs, 2 * img_height / 3, true);
+            }else{
+                return;
+            }
         }else {
             if (isLeft) {
                 label = 2;
             } else {
                 label = 7;
             }
-            locs = m.get(label);
-            locs = height_filter(locs, img_height / 2, true);
+            if(m.containsKey(label)) {
+                locs = m.get(label);
+                locs = height_filter(locs, img_height / 2, true);
+            }else{
+                return;
+            }
         }
         int max_num = 0;
         int[] max_loc = {-1, -1};
