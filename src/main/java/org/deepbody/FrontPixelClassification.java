@@ -24,6 +24,7 @@ import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
+import org.nd4j.linalg.dataset.api.preprocessor.NormalizerMinMaxScaler;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 import java.io.File;
@@ -119,7 +120,8 @@ public class FrontPixelClassification {
         //       normalizer.fit(trainIter);
         //      trainIter.setPreProcessor(normalizer);
 
-        DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
+        //DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
+        DataNormalization normalizer = new NormalizerMinMaxScaler();
         normalizer.fit(trainIter);
         trainIter.setPreProcessor(normalizer);
 
@@ -143,7 +145,6 @@ public class FrontPixelClassification {
         Evaluation eval = new Evaluation(labelNum);
         while (testIter.hasNext()) {
             DataSet next = testIter.next();
-            System.out.println(next);
             INDArray output = model.output(next.getFeatureMatrix());
             eval.eval(next.getLabels(), output);
         }
@@ -270,6 +271,7 @@ public class FrontPixelClassification {
         }
         System.out.println(f.getPath());
         normalizer.save(f);
+
     }
 
     private ConvolutionLayer convInit(String name, int in, int out, int[] kernel, int[] stride, int[] pad, double bias) {
