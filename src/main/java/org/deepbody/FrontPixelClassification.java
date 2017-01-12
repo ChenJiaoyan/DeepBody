@@ -269,6 +269,7 @@ public class FrontPixelClassification {
         if(f.exists()){
             f.delete();
         }
+        System.out.println(f.getPath());
         normalizer.save(f);
     }
 
