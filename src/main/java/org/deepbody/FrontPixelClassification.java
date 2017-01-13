@@ -130,7 +130,7 @@ public class FrontPixelClassification {
         System.out.println("**** Build Model ****");
         MultiLayerConfiguration conf = ANN_config();
         MultiLayerNetwork model = new MultiLayerNetwork(conf);
-        model.setListeners(new ScoreIterationListener(50));
+        model.setListeners(new ScoreIterationListener(5));
 
         System.out.println("**** Train Model ****");
         for (int i = 0; i < numEpochs; i++) {
