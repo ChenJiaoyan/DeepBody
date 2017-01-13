@@ -231,6 +231,7 @@ public class FrontPixelClassification {
                         .layer(4, new DenseLayer.Builder().activation("relu")
                                 .nOut(500).build())
                         //.layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+
                         .layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.SQUARED_LOSS)
                                 .nOut(labelNum)
                                 .activation("softmax")
