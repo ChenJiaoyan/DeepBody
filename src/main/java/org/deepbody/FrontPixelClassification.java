@@ -232,7 +232,7 @@ public class FrontPixelClassification {
                                 .nOut(500).build())
                         //.layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
 
-                        .layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.SQUARED_LOSS)
+                        .layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
                                 .nOut(labelNum)
                                 .activation("softmax")
                                 .build())
