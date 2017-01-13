@@ -117,17 +117,14 @@ public class FrontPixelClassification {
         ImageRecordReader recordReader = new ImageRecordReader(tile_height, tile_width, channels, labelMaker);
         recordReader.initialize(trainData);
         DataSetIterator trainIter = new RecordReaderDataSetIterator(recordReader, batchSize, 1, labelNum);
-        DataSet trainDataSet = trainIter.next();
 
 
         //DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
         //DataNormalization normalizer = new NormalizerMinMaxScaler();
         DataNormalization normalizer = new NormalizerStandardize();
 
-        //normalizer.fit(trainIter);
-        normalizer.fit(trainDataSet);
-        //trainIter.setPreProcessor(normalizer);
-        normalizer.transform(trainDataSet);
+        normalizer.fit(trainIter);
+        trainIter.setPreProcessor(normalizer);
 
         System.out.println(trainIter.getLabels());
 
@@ -138,8 +135,7 @@ public class FrontPixelClassification {
 
         System.out.println("**** Train Model ****");
         for (int i = 0; i < numEpochs; i++) {
-//            model.fit(trainIter);
-            model.fit(trainDataSet);
+            model.fit(trainIter);
         }
 
         System.out.println("**** Evaluate Model ****");
@@ -234,7 +230,8 @@ public class FrontPixelClassification {
                                 .build())
                         .layer(4, new DenseLayer.Builder().activation("relu")
                                 .nOut(500).build())
-                        .layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                        //.layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
+                        .layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.SQUARED_LOSS)
                                 .nOut(labelNum)
                                 .activation("softmax")
                                 .build())

@@ -368,9 +368,8 @@ public class FrontPredict {
         //DataNormalization normalizer = new NormalizerMinMaxScaler();
         DataNormalization normalizer = new NormalizerStandardize();
         normalizer.load(normalizer_file0,normalizer_file1,normalizer_file2,normalizer_file3);
-        //it.setPreProcessor(normalizer);
+        it.setPreProcessor(normalizer);
         DataSet ds = it.next();
-        normalizer.transform(ds);
 
         int row_n = (int) Math.ceil((img_height - tile_height) / (double) slide_stride);
         int col_n = (int) Math.ceil((img_width - tile_width) / (double) slide_stride);
