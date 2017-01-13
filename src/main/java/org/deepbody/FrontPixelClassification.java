@@ -22,6 +22,7 @@ import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
+import org.nd4j.linalg.dataset.api.iterator.StandardScaler;
 import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
 import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
 import org.nd4j.linalg.dataset.api.preprocessor.NormalizerMinMaxScaler;
@@ -116,14 +117,17 @@ public class FrontPixelClassification {
         ImageRecordReader recordReader = new ImageRecordReader(tile_height, tile_width, channels, labelMaker);
         recordReader.initialize(trainData);
         DataSetIterator trainIter = new RecordReaderDataSetIterator(recordReader, batchSize, 1, labelNum);
+        DataSet trainDataSet = trainIter.next();
 
 
         //DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
         //DataNormalization normalizer = new NormalizerMinMaxScaler();
         DataNormalization normalizer = new NormalizerStandardize();
 
-        normalizer.fit(trainIter);
-        trainIter.setPreProcessor(normalizer);
+        //normalizer.fit(trainIter);
+        normalizer.fit(trainDataSet);
+        //trainIter.setPreProcessor(normalizer);
+        normalizer.transform(trainDataSet);
 
         System.out.println(trainIter.getLabels());
 
@@ -134,17 +138,20 @@ public class FrontPixelClassification {
 
         System.out.println("**** Train Model ****");
         for (int i = 0; i < numEpochs; i++) {
-            model.fit(trainIter);
+//            model.fit(trainIter);
+            model.fit(trainDataSet);
         }
 
         System.out.println("**** Evaluate Model ****");
         recordReader.reset();
         recordReader.initialize(testData);
         DataSetIterator testIter = new RecordReaderDataSetIterator(recordReader, batchSize, 1, labelNum);
-        testIter.setPreProcessor(normalizer);
+        //testIter.setPreProcessor(normalizer);
+
         Evaluation eval = new Evaluation(labelNum);
         while (testIter.hasNext()) {
             DataSet next = testIter.next();
+            normalizer.transform(next);
             INDArray output = model.output(next.getFeatureMatrix());
             eval.eval(next.getLabels(), output);
         }
