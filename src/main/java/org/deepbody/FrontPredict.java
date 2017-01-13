@@ -364,7 +364,6 @@ public class FrontPredict {
         recordReader.initialize(is);
         DataSetIterator it = new RecordReaderDataSetIterator(recordReader, 1, 1, labelNum);
 
-        //DataNormalization normalizer = new NormalizerStandardize();
         //DataNormalization normalizer = new ImagePreProcessingScaler(0, 1);
         //DataNormalization normalizer = new NormalizerMinMaxScaler();
         DataNormalization normalizer = new NormalizerStandardize();
