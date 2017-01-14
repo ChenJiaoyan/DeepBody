@@ -232,7 +232,7 @@ public class FrontPixelClassification {
                                 .nOut(500).build())
                         //.layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
 
-                        .layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.SQUARED_HINGE)
+                        .layer(5, new OutputLayer.Builder(LossFunctions.LossFunction.MSE)
                                 .nOut(labelNum)
                                 .activation("softmax")
                                 .build())
@@ -253,7 +253,7 @@ public class FrontPixelClassification {
                                 .nIn(tile_height * tile_width * 3).nOut(100).activation("relu")
                                 .weightInit(WeightInit.XAVIER).build())
                         //.layer(1, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
-                        .layer(1, new OutputLayer.Builder(LossFunctions.LossFunction.SQUARED_HINGE)
+                        .layer(1, new OutputLayer.Builder(LossFunctions.LossFunction.MSE)
                                 .nIn(100).nOut(labelNum).activation("softmax")
                                 .weightInit(WeightInit.XAVIER).build())
                         .pretrain(false).backprop(true)
